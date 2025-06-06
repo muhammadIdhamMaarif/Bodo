@@ -4,15 +4,19 @@ project(Bodo)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(Bodo main.cpp
-        Core/AVLTree.h
-        Core/Patient.cpp
-        Core/Patient.h
-        Core/DiseaseHistory.cpp
-        Core/DiseaseHistory.h
-        Core/Person.cpp
-        Core/Person.h
-        Core/BirthDateHelper.cpp
-        Core/BirthDateHelper.h
-        Core/MedicalRecord.cpp
-        Core/MedicalRecord.h
+        Core/Abstract/AVLTree.h
+        Core/PersonData/Patient.cpp
+        Core/PersonData/Patient.h
+        Core/Records/DiseaseHistory.cpp
+        Core/Records/DiseaseHistory.h
+        Core/PersonData/Person.cpp
+        Core/PersonData/Person.h
+        Core/Helper/BirthDateHelper.cpp
+        Core/Helper/BirthDateHelper.h
+        Core/Records/MedicalRecord.cpp
+        Core/Records/MedicalRecord.h
+        Core/PersonData/Doctor.cpp
+        Core/PersonData/Doctor.h
+        Core/Helper/DoctorHelper.cpp
+        Core/Helper/DoctorHelper.h
 )

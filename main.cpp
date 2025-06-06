@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Core/Patient.h"
-#include "Core/BirthDateHelper.h"
+#include "Core/PersonData/Patient.h"
+#include "Core/Helper/BirthDateHelper.h"
 
 int main() {
     using namespace Data;

@@ -26,7 +26,8 @@
 #ifndef PATIENT_H
 #define PATIENT_H
 #include <string>
-#include "DiseaseHistory.h"
+#include "../Records/DiseaseHistory.h"
+#include "../Records/MedicalRecord.h"
 #include "Person.h"
 
 namespace Data {
@@ -36,6 +37,7 @@ namespace Data {
         static int      nextID;
         int             ID;
         DiseaseHistory  RiwayatPenyakit;
+        MedicalRecord   RiwayatPeriksa;
 
     public:
         // Constructor dan Destructor
