@@ -1,6 +1,27 @@
-//
-// Created by Acer on 06/06/2025.
-//
+
+// ============================================================================
+// | Patient.h                                                            |
+// | Kegunaan : Implementasi class Patient untuk menyimpan data pasien        |
+// |                                                                          |
+// | Penjelasan Singkat Kode :                                                |
+// |    File ini berisi definisi method untuk class Patient, termasuk         |
+// |    konstruktor, getter, setter, dan fungsi untuk mengelola data pasien   |
+// |    seperti biodata dan riwayat penyakit.                                 |
+// |                                                                          |
+// | Penjelasan Method :                                                      |
+// |    1. Patient()                                                          |
+// |          Konstruktor default dengan nilai awal dan auto increment ID.    |
+// |    2. Patient(...)                                                       |
+// |          Konstruktor parameter untuk inisialisasi lengkap atribut pasien |
+// |    3. GetID(), GetNama(), dll                                            |
+// |          Getter untuk mengakses atribut pasien                           |
+// |    4. SetNama(), SetAlamat(), dll                                        |
+// |          Setter untuk mengubah nilai atribut pasien                      |
+// |    5. TambahRiwayatPenyakit                                              |
+// |          Menambahkan nama penyakit ke dalam daftar riwayat penyakit      |
+// |    6. toString                                                           |
+// |          Mengembalikan data lengkap pasien dalam format string           |
+// ============================================================================
 
 #ifndef PATIENT_H
 #define PATIENT_H

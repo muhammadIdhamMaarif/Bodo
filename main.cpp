@@ -27,4 +27,4 @@ int main() {
     std::cout << patient1.toString() << std::endl;
 
     return 0;
-    }
+}

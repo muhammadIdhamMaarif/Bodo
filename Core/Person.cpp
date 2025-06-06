@@ -1,6 +1,18 @@
-//
-// Created by Acer on 07/06/2025.
-//
+
+// ============================================================================
+// | Person.cpp                                                               |
+// | Kegunaan : Membantu tanggal lahir (BirthDate) dalam Person               |
+// |                                                                          |
+// | Penjelasan Singkat Kode :                                                |
+// |    File ini berisi implementasi fungsi `makeBirthDate()` yang mengubah   |
+// |    input tahun, bulan, dan hari menjadi objek tanggal (`BirthDate`)      |
+// |    sesuai versi C++ yang digunakan (C++20 atau lebih lama).              |
+// |                                                                          |
+// | Penjelasan Fungsi :                                                      |
+// |    1. makeBirthDate(int year, int month, int day)                        |
+// |          - Jika menggunakan C++20: menggunakan std::chrono               |
+// |          - Jika di bawah C++20: menggunakan struct std::tm               |
+// ============================================================================
 
 #include "Person.h"
 

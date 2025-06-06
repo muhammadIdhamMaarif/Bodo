@@ -1,6 +1,18 @@
-//
-// Created by Acer on 07/06/2025.
-//
+
+// ============================================================================
+// | BirthDataHelper.h                                                        |
+// | Kegunaan : Deklarasi fungsi pembantu untuk Birth Date                    |
+// |                        q                                                 |
+// | Penjelasan Singkat Kode :                                                |
+// |    Mengecek apakah user menggunakan C++ 20 atau lebih baru, jika iya,    |
+// |    maka akan implementasi datetime dengan menggunakan chrono, dan jika   |
+// |    tidak maka akan implmenetasi dengan ctime.                            |
+// |                                                                          |
+// | Penjelasan Method :                                                      |
+// |    1. makeBirthDate                                                      |
+// |          Digunakan untuk mengubah parameter menjadi class chrono atau    |
+// |          ctime sesuai dengan versi C++ yang digunakan                    |
+// ============================================================================
 
 #ifndef BIRTHDATEHELPER_H
 #define BIRTHDATEHELPER_H

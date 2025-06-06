@@ -13,4 +13,6 @@ add_executable(Bodo main.cpp
         Core/Person.h
         Core/BirthDateHelper.cpp
         Core/BirthDateHelper.h
+        Core/MedicalRecord.cpp
+        Core/MedicalRecord.h
 )
