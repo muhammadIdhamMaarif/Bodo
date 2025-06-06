@@ -9,7 +9,7 @@ int main() {
     Patient patient1;
 
     // Set patient information manually (you can add setters if needed)
-    patient1.SetNama("Ragil Saputra");
+    patient1.SetNama("Ragil Saputra Ananda");
     patient1.SetTempatLahir("Bandung");
     patient1.SetJenisKelamin('L');
     patient1.SetGolonganDarah("O");
