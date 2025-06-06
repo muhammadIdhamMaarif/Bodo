@@ -6,30 +6,14 @@
 #define PATIENT_H
 #include <string>
 #include "DiseaseHistory.h"
-
-#if __cplusplus >= 202002L
-    #include <chrono>
-    using BirthDate = std::chrono::year_month_day;
-#else
-    #include <ctime>
-    using BirthDate = std::tm;
-#endif
+#include "Person.h"
 
 namespace Data {
 
-    class Patient {
+    class Patient : Person {
     private:
         static int      nextID;
         int             ID;
-        std::string     Nama;
-        std::string     TempatLahir;
-        BirthDate       TanggalLahir;
-        char            JenisKelamin;
-        std::string     GolonganDarah;
-        std::string     Alamat;
-        std::string     Agama;
-        std::string     NomorTelepon;
-        std::string     Email;
         DiseaseHistory  RiwayatPenyakit;
 
     public:
@@ -71,6 +55,9 @@ namespace Data {
         void SetNomorTelepon(const std::string& nomorTelepon);
         void SetEmail(const std::string& email);
         void SetRiwayatPenyakit(const DiseaseHistory& riwayat);
+
+        // Adders
+        void TambahRiwayatPenyakit(const std::string& penyakit);
 
         // Other Methods
         [[nodiscard]] std::string toString() const;
