@@ -19,4 +19,6 @@ add_executable(Bodo main.cpp
         Core/PersonData/Doctor.h
         Core/Helper/DoctorHelper.cpp
         Core/Helper/DoctorHelper.h
+        Core/Abstract/Queue.h
+        Core/Abstract/LinkedQueue.h
 )
