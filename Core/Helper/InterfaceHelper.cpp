@@ -3,8 +3,40 @@
 //
 
 #include "InterfaceHelper.h"
+#include "../../Interface/CLI/CommandLineInterface.h"
+#include "../../Interface/GUI/GraphicalUserInterface.h"
+#include <iostream>
+#include <vector>
+#include <regex>
+
+#ifdef _WIN32
+    #include <conio.h>
+    #include <windows.h>
+#else
+    #include <termios.h>
+    #include <unistd.h>
+    #include <cstdio>
+#endif
 
 namespace Interface {
+
+    // pengganti _getch() di non windows
+    int GetKeyPress() {
+    #ifdef _WIN32
+        return _getch();
+    #else
+        struct termios oldt, newt;
+        int ch;
+        tcgetattr(STDIN_FILENO, &oldt);          // buat dapetin attribut terminal terkini
+        newt = oldt;
+        newt.c_lflag &= ~(ICANON | ECHO);        // matiin buffering ama echo
+        tcsetattr(STDIN_FILENO, TCSANOW, &newt); // pasang settings baru
+        ch = getchar();
+        tcsetattr(STDIN_FILENO, TCSANOW, &oldt); // balikin settings lama
+        return ch;
+    #endif
+    }
+
 
     // Bersihkan layar
     void ClearScreen() {
@@ -94,7 +126,7 @@ namespace Interface {
         std::cout << YELLOW << "| " << YELLOW << "TUGAS AKHIR ALGORITMA DAN DATA STRUKTUR                       " << YELLOW << "|\n";
         std::cout << YELLOW << "| " << CYAN_VIBRANT << "Nama Kelompok :" << std::string(47, ' ') << YELLOW << "|\n";
         std::cout << YELLOW << "| " << CYAN_VIBRANT << "   1. " << GREEN_VIBRANT << "Muhammad Idham Ma'arif" << "          " << RED << "(245150300111024)" << YELLOW << "       |\n";
-        std::cout << YELLOW << "| " << CYAN_VIBRANT << "   2. " << GREEN_VIBRANT << "Muhammad Varrel diandra" << "         " << RED << "(245150307111029)" << YELLOW << "       |\n";
+        std::cout << YELLOW << "| " << CYAN_VIBRANT << "   2. " << GREEN_VIBRANT << "Muhammad Varrel Diandra" << "         " << RED << "(245150307111029)" << YELLOW << "       |\n";
         std::cout << YELLOW << "| " << CYAN_VIBRANT << "   3. " << GREEN_VIBRANT << "Muhammad Rafi Alfarel K" << "         " << RED << "(245150307111018)" << YELLOW << "       |\n";
         std::cout << YELLOW << "| " << CYAN_VIBRANT << "   4. " << GREEN_VIBRANT << "Rafi Ibnushaleh" << "                 " << RED << "(245150301111012)" << YELLOW << "       |\n";
         std::cout << YELLOW << "| " << CYAN_VIBRANT << "   5. " << GREEN_VIBRANT << "Afif Rafi Ardiyanto" << "             " << RED << "(245150307111026)" << YELLOW << "       |\n";
@@ -120,10 +152,10 @@ namespace Interface {
 
         while (true) {
             DrawMenu(menu, numChoices, selected);
-            int key = _getch();
+            int key = GetKeyPress();
 
             if (key == 224) { // Arrow key prefix
-                int arrow = _getch();
+                int arrow = GetKeyPress();
                 if (arrow == KEY_UP) {
                     selected = (selected - 1 + numChoices) % numChoices;
                 } else if (arrow == KEY_DOWN) {
@@ -137,7 +169,7 @@ namespace Interface {
                     case 2: Exit(); return;
                 }
                 std::cout << "\nPress any key to return to menu...";
-                _getch();
+                GetKeyPress();
             }
         }
 

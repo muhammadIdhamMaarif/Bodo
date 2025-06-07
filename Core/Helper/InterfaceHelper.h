@@ -2,19 +2,9 @@
 #define INTERFACEHELPER_H
 #include "ColorList.h"
 #include "TextInspector.h"
-#include "../../Interface/CLI/CommandLineInterface.h"
-#include "../../Interface/GUI/GraphicalUserInterface.h"
-#include <iostream>
 #include <string>
-#include <vector>
-#include <regex>
 #include <chrono>
-#include <thread>
 
-#ifdef _WIN32
-#include <conio.h>
-#include <windows.h>
-#endif
 using namespace Color;
 using namespace Text;
 
