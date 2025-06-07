@@ -18,6 +18,7 @@ namespace Color {
     const std::string GREEN_VIBRANT = "\033[38;5;34m";
     const std::string BOX_COLOR = "\033[34m";
     const std::string YELLOW = "\033[38;5;226m";
+    const std::string BRIGHT_YELLOW = "\033[93m";
     const std::string TEAL = "\033[38;5;37m";
     const std::string GOLD = "\033[38;5;178m";
     const std::string PURPLE = "\033[38;5;177m";

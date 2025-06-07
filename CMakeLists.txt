@@ -26,4 +26,8 @@ add_executable(Bodo main.cpp
         Core/Helper/InterfaceHelper.h
         Core/Helper/ColorList.h
         Core/Helper/TextInspector.h
+        Interface/CLI/CommandLineInterface.cpp
+        Interface/CLI/CommandLineInterface.h
+        Interface/GUI/GraphicalUserInterface.cpp
+        Interface/GUI/GraphicalUserInterface.h
 )

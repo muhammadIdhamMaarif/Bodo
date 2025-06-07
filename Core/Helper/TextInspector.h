@@ -24,6 +24,17 @@ namespace Text {
                                  |___/
 )";
 
+    const std::string ChooseInterface = R"(
+   ___ _                       ___     _            __
+  / __| |_  ___  ___ ___ ___  |_ _|_ _| |_ ___ _ _ / _|__ _ __ ___
+ | (__| ' \/ _ \/ _ (_-</ -_)  | || ' \  _/ -_) '_|  _/ _` / _/ -_)
+  \___|_||_\___/\___/__/\___| |___|_||_\__\___|_| |_| \__,_\__\___|
+)";
+
+    const std::string UnderlineChooseInterface = R"(  ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___
+ |___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|
+)";
+
     inline void PrintCharWithLength(char c, int length) { while (length--) { std::cout << c; } std::cout << '\n'; }
 
     const std::string NamaKelompok = R"(

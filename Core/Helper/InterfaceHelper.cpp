@@ -99,8 +99,113 @@ namespace Interface {
         std::cout << YELLOW << "| " << CYAN_VIBRANT << "   4. " << GREEN_VIBRANT << "Rafi Ibnushaleh" << "                 " << RED << "(245150301111012)" << YELLOW << "       |\n";
         std::cout << YELLOW << "| " << CYAN_VIBRANT << "   5. " << GREEN_VIBRANT << "Afif Rafi Ardiyanto" << "             " << RED << "(245150307111026)" << YELLOW << "       |\n";
         std::cout << YELLOW << "|                                                               |\n";
-        std::cout << YELLOW << "=================================================================" << RESET << "\n";
+        std::cout << YELLOW << "=================================================================" << RESET << "\n\n\n";
+    }
+
+    void PressAnyKeyToStartProgram() {
+        std::string temp;
+        std::cout << RED << "====================   PRESS ENTER KEY TO START   ====================\n" << RESET;
+        std::getline(std::cin, temp);
+        InterfaceSelection();
+    }
+
+    void InterfaceSelection() {
+        const std::string menu[] = {
+            "Command-Line Interface",
+            "Graphical User Interface",
+            "Exit"
+        };
+        const int numChoices = sizeof(menu) / sizeof(menu[0]);
+        int selected = 0;
+
+        while (true) {
+            DrawMenu(menu, numChoices, selected);
+            int key = _getch();
+
+            if (key == 224) { // Arrow key prefix
+                int arrow = _getch();
+                if (arrow == KEY_UP) {
+                    selected = (selected - 1 + numChoices) % numChoices;
+                } else if (arrow == KEY_DOWN) {
+                    selected = (selected + 1) % numChoices;
+                }
+            } else if (key == KEY_ENTER) {
+                system("cls");
+                switch (selected) {
+                    case 0: CommandLineInterfaceInvoke(); return;;
+                    case 1: GraphicalUserInterfaceInvoke(); return;;
+                    case 2: Exit(); return;
+                }
+                std::cout << "\nPress any key to return to menu...";
+                _getch();
+            }
+        }
 
     }
+
+    void SetColor(int color) {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+    }
+
+    void CommandLineInterfaceInvoke() {
+        std::cout << "Pake CommandLine\n";
+        CLI::OnCommandLineInterface();
+    }
+
+    void GraphicalUserInterfaceInvoke() {
+        std::cout << "Pake GUI\n";
+        GUI::OnGraphicalUserInterface();
+    }
+
+    void Exit() {
+        std::cout << "Metu dek program\n";
+    }
+
+    std::string ChooseWhitespaceForInteractionSelect(int i) {
+        switch (i) {
+            case 0:
+                return "                                     | |\n";
+            case 1:
+                return "                                   | |\n";
+            case 2:
+                return "                                                       | |\n";
+
+        }
+    }
+
+    void DrawMenu(const std::string choices[], int size, int selected) {
+        system("cls");
+        std::cout << BRIGHT_YELLOW << ChooseInterface << RESET;
+        std::cout << BRIGHT_YELLOW << UnderlineChooseInterface << RESET;
+        std::cout << BRIGHT_YELLOW << "  _                                                                 _ \n";
+        std::cout << BRIGHT_YELLOW << " | | " << YELLOW << "Use Down or Up Arrow to navigate, \"Enter\" to select           " << BRIGHT_YELLOW << "| |\n" << RESET;
+
+        for (int i = 0; i < size; i++) {
+            if (i == selected) {
+                SetColor(14); // Yellow
+                std::cout << " | |  ";
+                SetColor(11); // Cyan
+                std::cout << "> " << choices[i];
+                SetColor(14); //Yellow
+                std::cout << ChooseWhitespaceForInteractionSelect(i);
+                SetColor(7);  // Reset ke default
+            }
+
+            else {
+                SetColor(14); // Yellow
+                std::cout << " | |    ";
+                SetColor(7); // Default
+                std::cout << choices[i];
+                SetColor(14); // Yellow
+                std::cout << ChooseWhitespaceForInteractionSelect(i);
+                SetColor(7); // Default
+            }
+        }
+        std::cout << BRIGHT_YELLOW << " |_|                                                               |_|\n" << RESET;
+        std::cout << BRIGHT_YELLOW << UnderlineChooseInterface << RESET;
+
+    }
+
+
 
 } // Interface
