@@ -171,6 +171,7 @@ namespace Interface {
                 return "                                                       | |\n";
 
         }
+        return "";
     }
 
     void DrawMenu(const std::string choices[], int size, int selected) {
