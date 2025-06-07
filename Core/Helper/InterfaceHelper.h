@@ -18,6 +18,7 @@ namespace Interface {
     void ClearScreen();
     void DrawInputBox(const std::string& prompt, const std::string& currentInput);
     std::string GetInput(const std::string& prompt);
+    void TextRainbowDiagonalColor(std::string art);
     void DrawHeader();
     void PrintNamaKelompok();
     void PressAnyKeyToStartProgram();

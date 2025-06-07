@@ -94,9 +94,7 @@ namespace Interface {
         return input;
     }
 
-    void DrawHeader() {
-        const std::string art = BodoHeader;
-
+    void TextRainbowDiagonalColor(const std::string art) {
         const std::vector<int> rainbowColors = SeamlessRainbowColor_15_Colors;
 
         int colorIndex = 0;
@@ -119,6 +117,10 @@ namespace Interface {
         }
 
         std::cout << std::endl;
+    }
+
+    void DrawHeader() {
+        TextRainbowDiagonalColor(BodoHeader);
     }
 
     void PrintNamaKelompok() {
@@ -180,30 +182,23 @@ namespace Interface {
     }
 
     void CommandLineInterfaceInvoke() {
-        std::cout << "Pake CommandLine\n";
         CLI::OnCommandLineInterface();
     }
 
     void GraphicalUserInterfaceInvoke() {
-        std::cout << "Pake GUI\n";
         GUI::OnGraphicalUserInterface();
     }
 
     void Exit() {
-        std::cout << "Metu dek program\n";
+        TextRainbowDiagonalColor(ThankYouExitText);
+        std::cout << YELLOW << ItemSaved << RESET;
+        std::cout << YELLOW << ExitConfirmation << RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
     }
 
-    std::string ChooseWhitespaceForInteractionSelect(int i) {
-        switch (i) {
-            case 0:
-                return "                                     | |\n";
-            case 1:
-                return "                                   | |\n";
-            case 2:
-                return "                                                       | |\n";
-
-        }
-        return "";
+    std::string ChooseWhitespaceForInteractionSelect(std::string s) {
+        return (std::string(59 - s.length(), ' ') + "| |\n");
     }
 
     void DrawMenu(const std::string choices[], int size, int selected) {
@@ -211,7 +206,7 @@ namespace Interface {
         std::cout << BRIGHT_YELLOW << ChooseInterface << RESET;
         std::cout << BRIGHT_YELLOW << UnderlineChooseInterface << RESET;
         std::cout << BRIGHT_YELLOW << "  _                                                                 _ \n";
-        std::cout << BRIGHT_YELLOW << " | | " << YELLOW << "Use Down or Up Arrow to navigate, \"Enter\" to select           " << BRIGHT_YELLOW << "| |\n" << RESET;
+        std::cout << BRIGHT_YELLOW << " | | " << YELLOW << UpDownArrowEnterText << "           " << BRIGHT_YELLOW << "| |\n" << RESET;
 
         for (int i = 0; i < size; i++) {
             if (i == selected) {
@@ -220,7 +215,7 @@ namespace Interface {
                 SetColor(11); // Cyan
                 std::cout << "> " << choices[i];
                 SetColor(14); //Yellow
-                std::cout << ChooseWhitespaceForInteractionSelect(i);
+                std::cout << ChooseWhitespaceForInteractionSelect(choices[i]);
                 SetColor(7);  // Reset ke default
             }
 
@@ -230,7 +225,7 @@ namespace Interface {
                 SetColor(7); // Default
                 std::cout << choices[i];
                 SetColor(14); // Yellow
-                std::cout << ChooseWhitespaceForInteractionSelect(i);
+                std::cout << ChooseWhitespaceForInteractionSelect(choices[i]);
                 SetColor(7); // Default
             }
         }
@@ -238,7 +233,5 @@ namespace Interface {
         std::cout << BRIGHT_YELLOW << UnderlineChooseInterface << RESET;
 
     }
-
-
 
 } // Interface

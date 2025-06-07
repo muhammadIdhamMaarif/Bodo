@@ -15,11 +15,15 @@ void init() {
     GetConsoleMode(hOut, &dwMode);
     dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
     SetConsoleMode(hOut, dwMode);
+#else
+    std::cout << "Program does not support non Windows32 devices\n";
+    exit(1);
 #endif
 }
 
 int main(int argc, char** argv) {
     init();
+    system("cls");
     Interface::DrawHeader();
     Interface::PrintNamaKelompok();
     Interface::PressAnyKeyToStartProgram();
