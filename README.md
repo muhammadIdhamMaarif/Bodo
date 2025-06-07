@@ -8,7 +8,7 @@
 
 **NOTE :**
 
-| Bodo can only be used on windows
+ ```Bodo can only be used on windows```
 
 ---
 
