@@ -2,13 +2,13 @@
 
 
 [![Windows](https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white)](#)
-[![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=F0F0F0)](#)
-[![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)](#)
-
-
 
 
 **Bodo** or *"Booking Dokter"* is a C++ application that efficiently manages patient queues and medical records using **Queue** and **AVL Tree** data structures. It offers a full suite of features, including CRUD operations, fast search, undo functionality, and optional file saving. Designed with an interactive CLI, Bodo serves as a practical example of applying data structures in real-world scenarios.
+
+**NOTE :**
+
+| Bodo can only be used on windows
 
 ---
 
