@@ -30,4 +30,7 @@ add_executable(Bodo main.cpp
         Interface/CLI/CommandLineInterface.h
         Interface/GUI/GraphicalUserInterface.cpp
         Interface/GUI/GraphicalUserInterface.h
+        Animation/DonutSpinning.hpp
+        Animation/SplashScreen.hpp
+        Animation/SplashScreenText.h
 )

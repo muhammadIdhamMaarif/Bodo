@@ -3,14 +3,14 @@
 //
 
 #include "GraphicalUserInterface.h"
-
+#include "../../Animation/DonutSpinning.hpp"
 #include <iostream>
 #include <bits/ostream.tcc>
 
 namespace GUI {
 
     void OnGraphicalUserInterface() {
-        std::cout << "Hello World!" << std::endl;
+        DonutSpinningAnimation(true);
     }
 
 } // GUI

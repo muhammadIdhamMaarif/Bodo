@@ -212,7 +212,6 @@ namespace CLI {
         }
     }
 
-
     void SelectorManagePatient(const std::string menu[], const int numChoices, std::string header) {
 
         int selected = 0;
@@ -277,7 +276,6 @@ namespace CLI {
             }
         }
     }
-
 
     void SelectorManageDoctor(const std::string menu[], const int numChoices, std::string header) {
 
@@ -345,7 +343,6 @@ namespace CLI {
             }
         }
     }
-
 
     void SelectorMainMenu(const std::string menu[], const int numChoices, std::string header) {
 

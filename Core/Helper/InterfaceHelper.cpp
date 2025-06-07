@@ -2,9 +2,14 @@
 // Created by Acer on 07/06/2025.
 //
 
+#define NOMINMAX
+#define STRICT
+#define WIN32_LEAN_AND_MEAN
+
 #include "InterfaceHelper.h"
 #include "../../Interface/CLI/CommandLineInterface.h"
 #include "../../Interface/GUI/GraphicalUserInterface.h"
+#include "../../Animation/DonutSpinning.hpp"
 #include <iostream>
 #include <vector>
 #include <regex>
@@ -17,6 +22,9 @@
     #include <unistd.h>
     #include <cstdio>
 #endif
+
+#undef byte  // Just to be safe
+
 
 namespace Interface {
 
@@ -182,7 +190,7 @@ namespace Interface {
     }
 
     void CommandLineInterfaceInvoke() {
-        CLI::OnCommandLineInterface();
+        DonutSpinningAnimation(false);
     }
 
     void GraphicalUserInterfaceInvoke() {
