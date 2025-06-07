@@ -21,4 +21,9 @@ add_executable(Bodo main.cpp
         Core/Helper/DoctorHelper.h
         Core/Abstract/Queue.h
         Core/Abstract/LinkedQueue.h
+        Interface/CLI/CLI11.hpp
+        Core/Helper/InterfaceHelper.cpp
+        Core/Helper/InterfaceHelper.h
+        Core/Helper/ColorList.h
+        Core/Helper/TextInspector.h
 )
