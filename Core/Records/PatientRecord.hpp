@@ -6,7 +6,6 @@
 #define PATIENTRECORD_HPP
 
 #include "../Abstract/AVLTree.h"
-#include "../PersonData/Patient.h"
 
 
 class PatientRecord {
@@ -15,10 +14,6 @@ private:
 public:
     void AddPatient(const Data::Patient& newPatient) {
         Data.insert(newPatient);
-    }
-
-    void ViewAllPatient() {
-
     }
 
     void SearchPatient(int id);

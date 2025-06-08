@@ -40,32 +40,6 @@ protected:
     std::string     NomorTelepon;
     std::string     Email;
 
-public:
-
-    friend bool operator<(const Person& lhs, const Person& rhs) {
-        return lhs.Nama < rhs.Nama;
-    }
-
-    friend bool operator>(const Person& lhs, const Person& rhs) {
-        return lhs.Nama > rhs.Nama;
-    }
-
-    friend bool operator<=(const Person& lhs, const Person& rhs) {
-        return lhs.Nama <= rhs.Nama;
-    }
-
-    friend bool operator>=(const Person& lhs, const Person& rhs) {
-        return lhs.Nama >= rhs.Nama;
-    }
-
-    friend bool operator==(const Person& lhs, const Person& rhs) {
-        return lhs.Nama == rhs.Nama;
-    }
-
-    friend bool operator!=(const Person& lhs, const Person& rhs) {
-        return lhs.Nama != rhs.Nama;
-    }
-
 };
 
 #endif //PERSON_H

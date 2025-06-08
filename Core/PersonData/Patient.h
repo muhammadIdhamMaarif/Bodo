@@ -54,6 +54,30 @@ namespace Data {
 
         ~Patient() = default;
 
+        friend bool operator<(const Patient& lhs, const Patient& rhs) {
+            return lhs.GetNama() < rhs.GetNama();
+        }
+
+        friend bool operator>(const Patient& lhs, const Patient& rhs) {
+            return lhs.GetNama() > rhs.GetNama();
+        }
+
+        friend bool operator<=(const Patient& lhs, const Patient& rhs) {
+            return lhs.GetNama() <= rhs.GetNama();
+        }
+
+        friend bool operator>=(const Patient& lhs, const Patient& rhs) {
+            return lhs.GetNama() >= rhs.GetNama();
+        }
+
+        friend bool operator==(const Patient& lhs, const Patient& rhs) {
+            return lhs.GetNama() == rhs.GetNama();
+        }
+
+        friend bool operator!=(const Patient& lhs, const Patient& rhs) {
+            return lhs.GetNama() != rhs.GetNama();
+        }
+
         // Getters
         [[nodiscard]] int GetID() const;
         [[nodiscard]] const std::string& GetNama() const;

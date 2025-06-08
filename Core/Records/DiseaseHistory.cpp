@@ -20,6 +20,9 @@
 
 #include "DiseaseHistory.h"
 #include <sstream>
+#include <iomanip>
+
+#include "../Helper/ColorList.h"
 
 void DiseaseHistory::AddDisease(const std::string& disease) {
     diseases.push_back(disease);
@@ -36,9 +39,10 @@ bool DiseaseHistory::IsEmpty() const {
 std::string DiseaseHistory::toString() const {
     std::stringstream ss;
     ss << "Riwayat Penyakit: " << "\n";
-    int index = 1;
+    int index = 0;
     for (const auto& penyakit : diseases) {
-        ss << index++ << ". " << penyakit << "\n";
+        ss << Color::GREEN << "   " << std::setfill('0') << std::setw(3)
+           << ++index << ". " << penyakit << "\n" << Color::RESET;
     }
     return ss.str();
 }

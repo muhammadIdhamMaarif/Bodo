@@ -4,11 +4,14 @@
 
 #ifndef PATIENTMANAGEMENT_H
 #define PATIENTMANAGEMENT_H
+#include <chrono>
+#include <string>
 
 namespace Manager {
 
     void AddNewPatient();
+    std::chrono::year_month_day ParseDate(const std::string& dateStr);
 
-} // Manager
+}// Manager
 
 #endif //PATIENTMANAGEMENT_H

@@ -5,10 +5,9 @@
 #ifndef AVLTREE_H
 #define AVLTREE_H
 
-#include<iostream>
-#include<queue>
+#include <iostream>
+#include <queue>
 
-#include "../../Data/PatientData.h"
 using namespace std;
 
 namespace AVLTree {
@@ -262,7 +261,7 @@ namespace AVLTree {
         // fungsi-fungsi ini akan muncul di main saat menggunakan objek
         void insert(T value) {
             root = insertUtility(root, value);
-            Database::PatientLinear.push_back(value);
+            // Database::PatientLinear.push_back(value);
         }
         void remove(T value) {
             root = removeUtility(root, value);
