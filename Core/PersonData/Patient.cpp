@@ -27,6 +27,8 @@
 #include "../Helper/BirthDateHelper.h"
 #include <iostream>
 
+#include "../Helper/ColorList.h"
+
 namespace Data {
 
     int Patient::nextID = 1;
@@ -90,26 +92,28 @@ namespace Data {
 
     std::string Patient::toString() const {
         std::stringstream ss;
-        ss << "ID: " << ID << "\n"
-           << "Nama: " << Nama << "\n"
-           << "Tempat Lahir: " << TempatLahir << "\n";
+        ss << Color::CYAN << "ID            : " << Color::RESET << ID << "\n"
+           << Color::CYAN << "Nama          : " << Color::RESET << Nama << "\n"
+           << Color::CYAN << "Tempat Lahir  : " << Color::RESET << TempatLahir << "\n";
 
         #if __cplusplus >= 202002L
-        ss << "Tanggal Lahir: " << static_cast<int>(TanggalLahir.year()) << "-"
+        ss << Color::CYAN << "Tanggal Lahir : " << Color::RESET
+           << static_cast<int>(TanggalLahir.year()) << "-"
            << static_cast<unsigned>(TanggalLahir.month()) << "-"
            << static_cast<unsigned>(TanggalLahir.day()) << "\n";
         #else
-        ss << "Tanggal Lahir: " << (TanggalLahir.tm_year + 1900) << "-"
+        ss << Color::CYAN << "Tanggal Lahir : " << Color::RESET
+           << (TanggalLahir.tm_year + 1900) << "-"
            << (TanggalLahir.tm_mon + 1) << "-"
            << TanggalLahir.tm_mday << "\n";
         #endif
 
-        ss << "Jenis Kelamin: " << JenisKelamin << "\n"
-           << "Golongan Darah: " << GolonganDarah << "\n"
-           << "Alamat: " << Alamat << "\n"
-           << "Agama: " << Agama << "\n"
-           << "Nomor Telepon: " << NomorTelepon << "\n"
-           << "Email: " << Email << "\n"
+        ss << Color::CYAN << "Jenis Kelamin : " << Color::RESET << JenisKelamin << "\n"
+           << Color::CYAN << "Gol. Darah    : " << Color::RESET << GolonganDarah << "\n"
+           << Color::CYAN << "Alamat        : " << Color::RESET << Alamat << "\n"
+           << Color::CYAN << "Agama         : " << Color::RESET << Agama << "\n"
+           << Color::CYAN << "Nomor Telepon : " << Color::RESET << NomorTelepon << "\n"
+           << Color::CYAN << "Email         : " << Color::RESET << Email << "\n"
            << RiwayatPenyakit.toString() << "\n\n";
 
         return ss.str();

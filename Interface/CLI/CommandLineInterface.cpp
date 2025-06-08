@@ -7,6 +7,9 @@
 #include <iostream>
 #include <bits/ostream.tcc>
 #include <regex>
+#include "BookAppointmentManager.h"
+#include "DoctorManager.h"
+#include "PatientManagement.h"
 
 #ifdef _WIN32
     #include <conio.h>
@@ -73,7 +76,6 @@ namespace CLI {
 
             // Misc
             "Back to Main Menu",
-            "Exit"
         };
         int size = sizeof(menu) / sizeof(menu[0]);
         SelectorBookAppointment(menu, size, Text::BookAppointment);
@@ -104,7 +106,6 @@ namespace CLI {
 
             // Misc
             "Back to Main Menu",
-            "Exit"
         };
         int size = sizeof(menu) / sizeof(menu[0]);
         SelectorManagePatient(menu, size, Text::ManagePatientData);
@@ -134,7 +135,6 @@ namespace CLI {
 
             // Misc
              "Back to Main Menu",
-             "Exit"
         };
         int size = sizeof(menu) / sizeof(menu[0]);
         SelectorManageDoctor(menu, size, Text::ManageDoctorData);
@@ -204,7 +204,6 @@ namespace CLI {
                     case 8: ; return;
                     case 9: ; return;
                     case 10: MainMenuSelector(); return;
-                    case 11: Interface::Exit(); return;
                 }
                 std::cout << "\nPress any key to return to menu...";
                 GetKeyPress();
@@ -269,7 +268,6 @@ namespace CLI {
                     case 11: ; return;
                     case 12: ; return;
                     case 13: MainMenuSelector(); return;
-                    case 14: Interface::Exit(); return;
                 }
                 std::cout << "\nPress any key to return to menu...";
                 GetKeyPress();
@@ -336,7 +334,6 @@ namespace CLI {
                     case 16: ; return;
                     case 17: ; return;
                     case 18: MainMenuSelector(); return;
-                    case 19: Interface::Exit(); return;
                 }
                 std::cout << "\nPress any key to return to menu...";
                 GetKeyPress();

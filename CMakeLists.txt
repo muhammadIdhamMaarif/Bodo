@@ -17,7 +17,6 @@ add_executable(Bodo main.cpp
         Core/Records/MedicalRecord.h
         Core/PersonData/Doctor.cpp
         Core/PersonData/Doctor.h
-        Core/Helper/DoctorHelper.cpp
         Core/Helper/DoctorHelper.h
         Core/Abstract/Queue.h
         Core/Abstract/LinkedQueue.h
@@ -33,4 +32,12 @@ add_executable(Bodo main.cpp
         Animation/DonutSpinning.hpp
         Animation/SplashScreen.hpp
         Animation/SplashScreenText.h
+        Interface/CLI/DoctorManager.cpp
+        Interface/CLI/DoctorManager.h
+        Interface/CLI/PatientManagement.cpp
+        Interface/CLI/PatientManagement.h
+        Interface/CLI/BookAppointmentManager.cpp
+        Interface/CLI/BookAppointmentManager.h
+        Data/PatientData.h
+        Core/Records/PatientRecord.hpp
 )

@@ -23,6 +23,8 @@
 #include <sstream>
 #include <iomanip>
 
+#include "../Helper/ColorList.h"
+
 namespace Data {
 
     void MedicalRecord::AddRecord(const Checkup& record) {
@@ -35,15 +37,16 @@ namespace Data {
 
     std::string MedicalRecord::toString() const {
         std::stringstream ss;
-        ss << "Riwayat Pemeriksaan Medis:\n";
+        ss << Color::CYAN << "Riwayat Pemeriksaan Medis :\n" << Color::RESET;
         int index = 0;
         for (const auto& r : records) {
             std::tm* tm_ptr = std::localtime(&r.tanggal);
-            ss << ++index << ". Tanggal: " << std::put_time(tm_ptr, "%Y-%m-%d")
-               << "\n   Dokter: " << r.dokter
-               << "\n   Keluhan: " << r.keluhan
-               << "\n   Tindakan: " << r.tindakan
-               << "\n   Resep: " << r.resep << "\n\n";
+            ss << Color::GREEN << std::setfill('0') << std::setw(3) << ++index
+                          << std::put_time(tm_ptr, "%Y-%m-%d")
+                          << "\n   Dokter: " << r.dokter
+                          << "\n   Keluhan: " << r.keluhan
+                          << "\n   Tindakan: " << r.tindakan
+                          << "\n   Resep: " << r.resep << "\n\n";
         }
         return ss.str();
     }

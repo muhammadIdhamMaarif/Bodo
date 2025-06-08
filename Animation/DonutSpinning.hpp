@@ -88,7 +88,7 @@ inline void DonutSpinningAnimation(bool endless) {
             }
         A += 0.2;
         B += 0.1;
-        usleep(1000);
+        // usleep(1000);
     }
 
     // 🌟 Optional: Reset color and clear screen after done

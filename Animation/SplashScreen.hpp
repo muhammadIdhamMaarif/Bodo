@@ -11,7 +11,7 @@
 #include <chrono>
 #include <vector>
 
-inline void showLoadingBar(int total = 100, int delayMs = 50) {
+inline void showLoadingBar(int total = 100, int delayMs = 15) {
     const int barWidth = 50;  // Panjang loading bar
 
     for (int i = 0; i <= total; ++i) {
@@ -31,7 +31,7 @@ inline void showLoadingBar(int total = 100, int delayMs = 50) {
         std::cout.flush();
 
         // Tunggu dulu sebelum lanjut
-        std::this_thread::sleep_for(std::chrono::milliseconds(delayMs));
+        std::this_thread::sleep_for(std::chrono::milliseconds((rand() % 10) * 8));
     }
 
     std::cout << "\nDone!\n";
