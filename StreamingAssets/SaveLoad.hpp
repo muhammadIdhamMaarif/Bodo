@@ -54,6 +54,26 @@ namespace SLManager {
             for (const std::string& penyakit : riwayat.copyDisease()) {
                 jPasien["riwayatPenyakit"].push_back(penyakit);
             }
+            jPasien["riwayatPeriksa"] = json::array();
+
+            // struct Checkup {
+            //     std::time_t tanggal;         // Tanggal checkup/treatment
+            //     std::string dokter;          // Nama doketer
+            //     std::string keluhan;         // Keluhan pasien
+            //     std::string tindakan;        // Diagnosis / treatment
+            //     std::string resep;           // resep dokter dengan tulisanya yang cantik
+            // };
+
+            for (const Data::Checkup& checkup : pasien.GetRiwayatPeriksa().GetAllRecords()) {
+                json periksa;
+                periksa["tanggal"] = checkup.tanggal;
+                periksa["dokter"] = checkup.dokter;
+                periksa["keluhan"] = checkup.keluhan;
+                periksa["tindakan"] = checkup.tindakan;
+                periksa["resep"] = checkup.resep;
+
+                jPasien["riwayatPeriksa"].push_back(periksa);
+            }
 
             jPatients["data"].push_back(jPasien);
         }
@@ -122,6 +142,16 @@ namespace SLManager {
                         riwayat.AddDisease(penyakit);
                     }
                     pasien.SetRiwayatPenyakit(riwayat);
+
+                    for (const auto& checkup : jPasien["riwayatPeriksa"]) {
+                        Data::Checkup newCheckup;
+                        newCheckup.tanggal = checkup["tanggal"];
+                        newCheckup.dokter = checkup["dokter"];
+                        newCheckup.keluhan = checkup["keluhan"];
+                        newCheckup.tindakan = checkup["tindakan"];
+                        newCheckup.resep = checkup["resep"];
+                        pasien.TambahMedicalRecords(newCheckup);
+                    }
 
                     Database::PatientLinear.push_back(pasien);
                     Database::Patient.AddPatient(pasien);

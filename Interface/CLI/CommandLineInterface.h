@@ -31,6 +31,10 @@ namespace CLI {
     void SearchByIDCase();
     void EditPatient();
     void DeletePatient();
+    void AddDisease();
+    void PermissionDenied();
+    void AddMC();
+    void ViewMC();
 
 } // CLI
 

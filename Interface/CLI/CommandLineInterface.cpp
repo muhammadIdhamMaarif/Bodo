@@ -198,16 +198,16 @@ namespace CLI {
                 // "Exit"
 
                 switch (selected) {
-                    case 0: ; return;
-                    case 1: ; return;
-                    case 2: ; return;
-                    case 3: ; return;
-                    case 4: ; return;
-                    case 5: ; return;
-                    case 6: ; return;
-                    case 7: ; return;
-                    case 8: ; return;
-                    case 9: ; return;
+                    case 0: PermissionDenied(); return;
+                    case 1: PermissionDenied(); return;
+                    case 2: PermissionDenied(); return;
+                    case 3: PermissionDenied(); return;
+                    case 4: PermissionDenied(); return;
+                    case 5: PermissionDenied(); return;
+                    case 6: PermissionDenied(); return;
+                    case 7: PermissionDenied(); return;
+                    case 8: PermissionDenied(); return;
+                    case 9: PermissionDenied(); return;
                     case 10: MainMenuSelector(); return;
                 }
                 std::cout << "\nPress any key to return to menu...";
@@ -234,25 +234,25 @@ namespace CLI {
             } else if (key == KEY_ENTER) {
                 system("cls");
                 // 📌 Manajemen Data Pasien (CRUD)
-                // "Add New Patient",
-                // "View All Patients",
-                // "Search Patient",
-                // "Edit Patient Information",
-                // "Delete Patient",
+                // 0 "Add New Patient",
+                // 1 "View All Patients",
+                // 2 "Search Patient",
+                // 3 "Edit Patient Information",
+                // 4 "Delete Patient",
                 //
                 // // 🧬 Manajemen Riwayat Penyakit (DiseaseHistory)
-                // "Add Disease History to Patient",
-                // "View Patient's Disease History",
-                // "Check if Patient Has No Disease History",
+                // 5 "Add Disease History to Patient",
+                // 6 "View Patient's Disease History",
+                // 7 "Check if Patient Has No Disease History",
                 //
                 // // 🩺 Manajemen Riwayat Pemeriksaan Medis (MedicalRecord)
-                // "Add New Medical Checkup Record",
-                // "View All Medical Records",
+                // 8 "Add New Medical Checkup Record",
+                // 9 "View All Medical Records",
                 //
                 // // 📊 Laporan dan Ringkasan (Optional Advanced)
-                // "Print Patient Summary",
-                // "Export Patient Data to File",
-                // "Import Patient Data from File",
+                // 10 "Print Patient Summary",
+                // 11 "Export Patient Data to File",
+                // 12 "Import Patient Data from File",
                 //
                 // // Misc
                 // "Back to Main Menu",
@@ -264,14 +264,14 @@ namespace CLI {
                     case 2: SearchByIDCase(); return;
                     case 3: EditPatient(); return;
                     case 4: DeletePatient(); return;
-                    case 5: ; return;
-                    case 6: ; return;
-                    case 7: ; return;
-                    case 8: ; return;
-                    case 9: ; return;
-                    case 10: ; return;
-                    case 11: ; return;
-                    case 12: ; return;
+                    case 5: AddDisease(); return;
+                    case 6: SearchByIDCase(); return;
+                    case 7: SearchByIDCase(); return;
+                    case 8: AddMC(); return;
+                    case 9: Manager::ViewAllPatients(); return;
+                    case 10: SearchByIDCase(); return;
+                    case 11: Manager::ExportPatientDataToFile(); return;
+                    case 12: Manager::ImportPatientDataFromFile(); return;
                     case 13: MainMenuSelector(); return;
                 }
                 std::cout << "\nPress any key to return to menu...";
@@ -320,24 +320,24 @@ namespace CLI {
              // "Exit"
 
                 switch (selected) {
-                    case 0: ; return;
-                    case 1: ; return;
-                    case 2: ; return;
-                    case 3: ; return;
-                    case 4: ; return;
-                    case 5: ; return;
-                    case 6: ; return;
-                    case 7: ; return;
-                    case 8: ; return;
-                    case 9: ; return;
-                    case 10: ; return;
-                    case 11: ; return;
-                    case 12: ; return;
-                    case 13: ; return;
-                    case 14: ; return;
-                    case 15: ; return;
-                    case 16: ; return;
-                    case 17: ; return;
+                    case 0: PermissionDenied(); return;
+                    case 1: PermissionDenied(); return;
+                    case 2: PermissionDenied(); return;
+                    case 3: PermissionDenied(); return;
+                    case 4: PermissionDenied(); return;
+                    case 5: PermissionDenied(); return;
+                    case 6: PermissionDenied(); return;
+                    case 7: PermissionDenied(); return;
+                    case 8: PermissionDenied(); return;
+                    case 9: PermissionDenied(); return;
+                    case 10: PermissionDenied(); return;
+                    case 11: PermissionDenied(); return;
+                    case 12: PermissionDenied(); return;
+                    case 13: PermissionDenied(); return;
+                    case 14: PermissionDenied(); return;
+                    case 15: PermissionDenied(); return;
+                    case 16: PermissionDenied(); return;
+                    case 17: PermissionDenied(); return;
                     case 18: MainMenuSelector(); return;
                 }
                 std::cout << "\nPress any key to return to menu...";
@@ -425,6 +425,36 @@ namespace CLI {
         std::string dummy;
         std::getline(std::cin, dummy);
         Manager::DeletePatient(dummy);
+    }
+
+    void AddDisease() {
+        std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::AddDiseaseHistory(dummy);
+    }
+
+    void PermissionDenied() {
+        std::cout << Color::RED << Text::PermissionDenied << Color::RESET;
+
+        std::cout << Color::YELLOW << Text::AllPatientDataConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+    }
+
+    void AddMC() {
+        std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::AddMedicalCheckupRecord(dummy);
+    }
+
+    void ViewMC() {
+        std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::ViewPatientMedicalRecord(dummy);
     }
 
 } // CLI

@@ -37,16 +37,17 @@ namespace Data {
 
     std::string MedicalRecord::toString() const {
         std::stringstream ss;
-        ss << Color::CYAN << "Riwayat Pemeriksaan Medis :\n" << Color::RESET;
+        ss << Color::CYAN_VIBRANT << "     Riwayat Pemeriksaan Medis :\n" << Color::RESET;
         int index = 0;
         for (const auto& r : records) {
             std::tm* tm_ptr = std::localtime(&r.tanggal);
-            ss << Color::GREEN << std::setfill('0') << std::setw(3) << ++index
+            ss << Color::GREEN << "        " << std::setfill('0') << std::setw(3) << ++index << ". Tanggal   : "
                           << std::put_time(tm_ptr, "%Y-%m-%d")
-                          << "\n   Dokter: " << r.dokter
-                          << "\n   Keluhan: " << r.keluhan
-                          << "\n   Tindakan: " << r.tindakan
-                          << "\n   Resep: " << r.resep << "\n\n";
+            //                 "        001. Tanggal   : "
+                          << Color::CYAN << "\n             Dokter    : " << Color::RESET << r.dokter
+                          << Color::CYAN << "\n             Keluhan   : " << Color::RESET <<  r.keluhan
+                          << Color::CYAN << "\n             Tindakan  : " << Color::RESET <<  r.tindakan
+                          << Color::CYAN << "\n             Resep     : " << Color::RESET <<  r.resep << "\n" << Color::RESET;
         }
         return ss.str();
     }

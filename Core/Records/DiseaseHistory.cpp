@@ -42,7 +42,7 @@ std::string DiseaseHistory::toString() const {
     int index = 0;
     for (const auto& penyakit : diseases) {
         ss << Color::GREEN << "        " << std::setfill('0') << std::setw(3)
-           << ++index << ". " << penyakit << "\n" << Color::RESET;
+           << ++index << ". " << Color::RESET <<  penyakit << "\n" << Color::RESET;
     }
     return ss.str();
 }

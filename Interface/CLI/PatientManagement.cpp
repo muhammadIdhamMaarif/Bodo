@@ -54,7 +54,7 @@ namespace Manager {
         std::cout << Color::CYAN << "Email                 : " << Color::RESET;
         std::getline(std::cin, email);
 
-        std::cout << Color::YELLOW   << "Medical Records       : \n" << Color::RESET;
+        std::cout << Color::YELLOW   << "Disease History       : \n" << Color::RESET;
         std::cout << Color::GREEN    << "    If done, press \"Enter\" with blank input.\n" << Color::RESET;
         while (true) {
             std::string temp;
@@ -143,8 +143,6 @@ namespace Manager {
             SearchPatientByName(param);
         }
     }
-
-
     void SearchPatientByID(int id) {
         // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         bool found = false;
@@ -168,7 +166,6 @@ namespace Manager {
         std::getline(std::cin, dummy);
         CLI::MainMenuSelector();
     }
-
     void SearchPatientByName(const std::string& param) {
         Data::Patient* foundPatient = Database::Patient.SearchPatient(param);
         if (foundPatient == nullptr) { DataNotFoundErrorMessage(); return; }
@@ -221,7 +218,6 @@ namespace Manager {
             EditPatientInformationByName(param);
         }
     }
-
     void EditPatientInformationByID(int id) {
         // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         bool found = false;
@@ -281,7 +277,6 @@ namespace Manager {
         std::getline(std::cin, dummy);
         CLI::MainMenuSelector();
     }
-
     void EditPatientInformationByName(const std::string& name) {
         Data::Patient* patientFound = Database::Patient.SearchPatient(name);
 
@@ -349,7 +344,6 @@ namespace Manager {
             DeletePatientByName(param);
         }
     }
-
     void DeletePatientByID(int id) {
         bool found = false;
         Data::Patient patientFound(false);
@@ -425,7 +419,6 @@ namespace Manager {
         CLI::MainMenuSelector();
         return;
     }
-
     void DeletePatientByName(std::string name) {
         Data::Patient* patientFoundPtr;
         patientFoundPtr = Database::Patient.SearchPatient(name);
@@ -503,19 +496,355 @@ namespace Manager {
         return;
     }
 
-    void AddDiseaseHistory(int id);
-    void AddDiseaseHistory(std::string name);
-    void ViewPatientDiseaseHistory(int id);
-    void ViewPatientDiseaseHistory(std::string name);
-    bool HasDiseaseHistory(int id);
-    bool HasDiseaseHistory(std::string name);
-    void AddMedicalCheckupRecord(int id, Data::Checkup checkup);
-    void AddMedicalCheckupRecord(std::string name, Data::Checkup checkup);
-    void ViewPatientMedicalRecord(int id);
-    void ViewPatientMedicalRecord(std::string name);
+    void AddDiseaseHistory(const std::string& param) {
+        try {
+            size_t idx;
+            int id = std::stoi(param, &idx);
+
+            if (idx == param.length()) {
+                AddDiseaseHistoryByID(id);
+                return;
+            }
+        } catch (const std::out_of_range& e) {
+            DataNotFoundErrorMessage();
+            return;
+        } catch (const exception& e) {
+            AddDiseaseHistoryByName(param);
+        }
+    }
+    void AddDiseaseHistoryByID(int id) {
+        bool found = false;
+        Data::Patient* patientFound;
+        for (Data::Patient& patient : Database::PatientLinear) {
+            if (patient.GetID() == id) {
+                found = true;
+                patientFound = &patient;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+
+        std::cout << Color::CYAN << Text::DataFound << Color::RESET;
+
+        std::cout << patientFound->toString();
+
+        std::cout << Color::CYAN << Text::DataFoundDash << Color::RESET;
+
+        std::cout << Color::YELLOW << "\nAdd Disease History? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::string inputSubmit;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); return; }
+
+        std::cout << Color::BRIGHT_YELLOW << Text::AddDisease << Color::RESET;
+
+        std::vector<std::string> addedDisease;
+        std::cout << Color::BRIGHT_YELLOW << "If done, press \"Enter\" with blank input.\n" << Color::RESET;
+        while (true) {
+            std::string temp;
+            std::cout << Color::CYAN << " > " << Color::RESET;
+            std::getline(std::cin, temp);
+            if (temp == "") break;
+            addedDisease.push_back(temp);
+        }
+        std::cout << Color::BRIGHT_YELLOW << "Submit Updates? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::BRIGHT_YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); }
+
+        Data::Patient* patientFoundPtr = Database::Patient.SearchPatient(patientFound->GetNama());
+        for (std::string newDisease : addedDisease) {
+            patientFound->TambahRiwayatPenyakit(newDisease);
+            patientFoundPtr->TambahRiwayatPenyakit(newDisease);
+        }
+
+        std::cout << "\033[2J\033[H"; //clear screen
+        Interface::TextRainbowDiagonalColor(Text::EditedSuccess);
+        std::cout << Color::YELLOW << Text::DataFoundConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+    }
+    void AddDiseaseHistoryByName(std::string name) {
+        Data::Patient* patientFoundPtr = Database::Patient.SearchPatient(name);
+        if (patientFoundPtr == nullptr) { DataNotFoundErrorMessage(); return; }
+
+        bool found = false;
+        Data::Patient* patientFound;
+        for (Data::Patient& patient : Database::PatientLinear) {
+            if (patient.GetID() == patientFoundPtr->GetID()) {
+                found = true;
+                patientFound = &patient;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+
+        std::cout << Color::CYAN << Text::DataFound << Color::RESET;
+
+        std::cout << patientFound->toString();
+
+        std::cout << Color::CYAN << Text::DataFoundDash << Color::RESET;
+
+        std::cout << Color::YELLOW << "\nAdd Disease History? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::string inputSubmit;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); return; }
+
+        std::cout << Color::BRIGHT_YELLOW << Text::AddDisease << Color::RESET;
+
+        std::vector<std::string> addedDisease;
+        std::cout << Color::BRIGHT_YELLOW << "If done, press \"Enter\" with blank input.\n" << Color::RESET;
+        while (true) {
+            std::string temp;
+            std::cout << Color::CYAN << " > " << Color::RESET;
+            std::getline(std::cin, temp);
+            if (temp == "") break;
+            addedDisease.push_back(temp);
+        }
+        std::cout << Color::BRIGHT_YELLOW << "Submit Updates? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::BRIGHT_YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); }
+
+        for (std::string newDisease : addedDisease) {
+            patientFound->TambahRiwayatPenyakit(newDisease);
+            patientFoundPtr->TambahRiwayatPenyakit(newDisease);
+        }
+
+        std::cout << "\033[2J\033[H"; //clear screen
+        Interface::TextRainbowDiagonalColor(Text::EditedSuccess);
+        std::cout << Color::YELLOW << Text::DataFoundConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+
+    }
+
+    void AddMedicalCheckupRecord(const std::string& param) {
+        try {
+            size_t idx;
+            int id = std::stoi(param, &idx);
+
+            if (idx == param.length()) {
+                AddMedicalCheckupRecordByID(id);
+                return;
+            }
+        } catch (const std::out_of_range& e) {
+            DataNotFoundErrorMessage();
+            return;
+        } catch (const exception& e) {
+            AddMedicalCheckupRecordByName(param);
+        }
+    }
+    void AddMedicalCheckupRecordByID(int id) {
+        bool found = false;
+        Data::Patient* patientFound;
+        for (Data::Patient& patient : Database::PatientLinear) {
+            if (patient.GetID() == id) {
+                found = true;
+                patientFound = &patient;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+        Data::Patient* patientFoundPtr = Database::Patient.SearchPatient(patientFound->GetNama());
+
+        std::cout << Color::CYAN << Text::DataFound << Color::RESET;
+
+        std::cout << patientFound->toString();
+
+        std::cout << Color::CYAN << Text::DataFoundDash << Color::RESET;
+
+        std::cout << Color::YELLOW << "\nAdd Medical Checkup Record(s)? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::string inputSubmit;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); return; }
+
+        std::cout << Color::BRIGHT_YELLOW << Text::MedicalRecords << Color::RESET;
+
+        // Checkup Class
+        // std::time_t tanggal;         // Tanggal checkup/treatment
+        // std::string dokter;          // Nama doketer
+        // std::string keluhan;         // Keluhan pasien
+        // std::string tindakan;        // Diagnosis / treatment
+        // std::string resep;           // resep dokter dengan tulisanya yang cantik
+
+        // Medical Record Class
+        // std::vector<Checkup>
+
+        std::vector<Data::Checkup> checkupList;
+
+        while (true) {
+            Data::Checkup newCheckup;
+            newCheckup.tanggal = std::time(nullptr);
+            std::cout << Color::CYAN << "    Nama Doktor : " << Color::RESET;
+            std::getline(std::cin, newCheckup.dokter);
+            std::cout << Color::CYAN << "    Keluhan     : " << Color::RESET;
+            std::getline(std::cin, newCheckup.keluhan);
+            std::cout << Color::CYAN << "    Tindakan    : " << Color::RESET;
+            std::getline(std::cin, newCheckup.tindakan);
+            std::cout << Color::CYAN << "    Resep       : " << Color::RESET;
+            std::getline(std::cin, newCheckup.resep);
+
+            checkupList.push_back(newCheckup);
+
+            std::cout << Color::BRIGHT_YELLOW << "Add more? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::BRIGHT_YELLOW << ")? " << Color::CYAN_VIBRANT;
+            std::getline(std::cin, inputSubmit);
+            std::cout << Color::RESET;
+            if (std::toupper(inputSubmit[0]) == 'N') { break; }
+        }
+
+        std::cout << Color::BRIGHT_YELLOW << "Submit Records Update(s)? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::BRIGHT_YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); }
+
+        for (Data::Checkup& checkup : checkupList) {
+            patientFound->TambahMedicalRecords(checkup);
+            patientFoundPtr->TambahMedicalRecords(checkup);
+        }
+
+        std::cout << "\033[2J\033[H"; //clear screen
+        Interface::TextRainbowDiagonalColor(Text::EditedSuccess);
+        std::cout << Color::YELLOW << Text::DataFoundConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+    }
+    void AddMedicalCheckupRecordByName(std::string name) {
+        Data::Patient* patientFoundPtr = Database::Patient.SearchPatient(name);
+        if (patientFoundPtr == nullptr) { DataNotFoundErrorMessage(); return; }
+
+        bool found = false;
+        Data::Patient* patientFound;
+        for (Data::Patient& patient : Database::PatientLinear) {
+            if (patient.GetID() == patientFoundPtr->GetID()) {
+                found = true;
+                patientFound = &patient;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+
+        std::cout << Color::CYAN << Text::DataFound << Color::RESET;
+
+        std::cout << patientFound->toString();
+
+        std::cout << Color::CYAN << Text::DataFoundDash << Color::RESET;
+
+        std::cout << Color::YELLOW << "\nAdd Medical Checkup Record(s)? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::string inputSubmit;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); return; }
+
+        std::cout << Color::BRIGHT_YELLOW << Text::MedicalRecords << Color::RESET;
+
+        // Checkup Class
+        // std::time_t tanggal;         // Tanggal checkup/treatment
+        // std::string dokter;          // Nama doketer
+        // std::string keluhan;         // Keluhan pasien
+        // std::string tindakan;        // Diagnosis / treatment
+        // std::string resep;           // resep dokter dengan tulisanya yang cantik
+
+        // Medical Record Class
+        // std::vector<Checkup>
+
+        std::vector<Data::Checkup> checkupList;
+
+        while (true) {
+            Data::Checkup newCheckup;
+            newCheckup.tanggal = std::time(nullptr);
+            std::cout << Color::CYAN << "    Nama Doktor : " << Color::RESET;
+            std::getline(std::cin, newCheckup.dokter);
+            std::cout << Color::CYAN << "    Keluhan     : " << Color::RESET;
+            std::getline(std::cin, newCheckup.keluhan);
+            std::cout << Color::CYAN << "    Tindakan    : " << Color::RESET;
+            std::getline(std::cin, newCheckup.tindakan);
+            std::cout << Color::CYAN << "    Resep       : " << Color::RESET;
+            std::getline(std::cin, newCheckup.resep);
+
+            checkupList.push_back(newCheckup);
+
+            std::cout << Color::BRIGHT_YELLOW << "Add more? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::BRIGHT_YELLOW << ")? " << Color::CYAN_VIBRANT;
+            std::getline(std::cin, inputSubmit);
+            std::cout << Color::RESET;
+            if (std::toupper(inputSubmit[0]) == 'N') { break; }
+        }
+
+        std::cout << Color::BRIGHT_YELLOW << "Submit Records Update(s)? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::BRIGHT_YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); }
+
+        for (Data::Checkup& checkup : checkupList) {
+            patientFound->TambahMedicalRecords(checkup);
+            patientFoundPtr->TambahMedicalRecords(checkup);
+        }
+
+        std::cout << "\033[2J\033[H"; //clear screen
+        Interface::TextRainbowDiagonalColor(Text::EditedSuccess);
+        std::cout << Color::YELLOW << Text::DataFoundConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+    }
+
+    void ViewPatientMedicalRecord(const std::string& param) {
+        try {
+            size_t idx;
+            int id = std::stoi(param, &idx);
+
+            if (idx == param.length()) {
+                ViewPatientMedicalRecordByID(id);
+                return;
+            }
+        } catch (const std::out_of_range& e) {
+            DataNotFoundErrorMessage();
+            return;
+        } catch (const exception& e) {
+            ViewPatientMedicalRecordByName(param);
+        }
+    }
+    void ViewPatientMedicalRecordByID(int id) {
+        bool found = false;
+        Data::Patient* patientFound;
+        for (Data::Patient& patient : Database::PatientLinear) {
+            if (patient.GetID() == id) {
+                found = true;
+                patientFound = &patient;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+
+
+    }
+    void ViewPatientMedicalRecordByName(std::string name) {
+
+    }
+
     void PatientSummary(int id);
     void PatientSummary(std::string name);
-    void ExportPatientDataToFile(std::string filename);
-    void ImportPatientDataFromFile(std::string path);
+
+    void ExportPatientDataToFile() {
+        std::cout << Text::ExportFIle;
+
+        std::cout << Color::YELLOW << Text::DataFoundConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+    }
+    void ImportPatientDataFromFile() {
+        std::cout << Text::ImportFile;
+
+        std::cout << Color::YELLOW << Text::DataFoundConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+    }
 
 } // Manager

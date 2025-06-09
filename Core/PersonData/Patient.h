@@ -91,6 +91,7 @@ namespace Data {
         [[nodiscard]] const std::string& GetNomorTelepon() const;
         [[nodiscard]] const std::string& GetEmail() const;
         [[nodiscard]] const DiseaseHistory& GetRiwayatPenyakit() const;
+        [[nodiscard]] const MedicalRecord& GetRiwayatPeriksa() const;
 
         // Setters
         void SetID(const int& id) { ID = id; };
@@ -111,6 +112,7 @@ namespace Data {
 
         // Adders
         void TambahRiwayatPenyakit(const std::string& penyakit);
+        void TambahMedicalRecords(const Checkup& newCheckup);
 
         // Other Methods
         [[nodiscard]] std::string toString() const;

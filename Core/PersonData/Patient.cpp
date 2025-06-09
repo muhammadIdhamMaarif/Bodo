@@ -75,6 +75,7 @@ namespace Data {
     const std::string& Patient::GetNomorTelepon() const { return NomorTelepon; }
     const std::string& Patient::GetEmail() const { return Email; }
     const DiseaseHistory& Patient::GetRiwayatPenyakit() const { return RiwayatPenyakit; }
+    const MedicalRecord& Patient::GetRiwayatPeriksa() const { return RiwayatPeriksa; }
 
     // Setters
     void Patient::SetNama(const std::string& nama) { Nama = nama; }
@@ -90,6 +91,7 @@ namespace Data {
 
     // Adders
     void Patient::TambahRiwayatPenyakit(const std::string& penyakit) { RiwayatPenyakit.AddDisease(penyakit); }
+    void Patient::TambahMedicalRecords(const Checkup& newCheckup) { RiwayatPeriksa.AddRecord(newCheckup); }
 
     std::string Patient::toString() const {
         std::stringstream ss;
@@ -115,7 +117,8 @@ namespace Data {
            << Color::CYAN << "     Agama         : " << Color::RESET << Agama << "\n"
            << Color::CYAN << "     Nomor Telepon : " << Color::RESET << NomorTelepon << "\n"
            << Color::CYAN << "     Email         : " << Color::RESET << Email << "\n"
-           << RiwayatPenyakit.toString() << "";
+           << RiwayatPenyakit.toString()
+           << RiwayatPeriksa.toString() << "";
 
         return ss.str();
     }

@@ -34,7 +34,7 @@ inline void showLoadingBar(int total = 100, int delayMs = 15) {
         std::this_thread::sleep_for(std::chrono::milliseconds((rand() % 5)));
     }
 
-    std::cout << "\nDone!\n";
+    std::cout << "\nProject loaded successfully\n";
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 
