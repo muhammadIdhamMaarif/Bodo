@@ -38,10 +38,10 @@ bool DiseaseHistory::IsEmpty() const {
 
 std::string DiseaseHistory::toString() const {
     std::stringstream ss;
-    ss << "Riwayat Penyakit: " << "\n";
+    ss << Color::CYAN_VIBRANT << "     Riwayat Penyakit: " << "\n" << Color::RESET;
     int index = 0;
     for (const auto& penyakit : diseases) {
-        ss << Color::GREEN << "   " << std::setfill('0') << std::setw(3)
+        ss << Color::GREEN << "        " << std::setfill('0') << std::setw(3)
            << ++index << ". " << penyakit << "\n" << Color::RESET;
     }
     return ss.str();

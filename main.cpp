@@ -2,8 +2,14 @@
 #include "Core/Helper/InterfaceHelper.h"
 #include <iostream>
 #include <string>
+
+#include "StreamingAssets/SaveLoad.hpp"
 #ifdef _WIN32
+#define NOMINMAX
+#define STRICT
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#undef byte
 #endif
 using namespace Data;
 
@@ -21,9 +27,12 @@ void init() {
 #endif
 }
 
+void LoadFile() { SLManager::LoadData(); }
+
 int main(int argc, char** argv) {
     init();
     system("cls");
+    LoadFile();
     Interface::DrawHeader();
     Interface::PrintNamaKelompok();
     Interface::PressAnyKeyToStartProgram();

@@ -40,4 +40,6 @@ add_executable(Bodo main.cpp
         Interface/CLI/BookAppointmentManager.h
         Data/PatientData.h
         Core/Records/PatientRecord.hpp
+        StreamingAssets/json.hpp
+        StreamingAssets/SaveLoad.hpp
 )

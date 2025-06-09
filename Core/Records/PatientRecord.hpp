@@ -10,18 +10,20 @@
 
 class PatientRecord {
 private:
-    AVLTree::AVL<Data::Patient> Data;
+    AVLTree::AVL Data;
 public:
     void AddPatient(const Data::Patient& newPatient) {
         Data.insert(newPatient);
     }
 
-    void SearchPatient(int id);
-    void SearchPatient(std::string name);
-    void EditPatientInformation(int id);
-    void EditPatientInformation(std::string name);
-    void DeletePatient(int id);
-    void DeletePatient(std::string name);
+    Data::Patient* SearchPatient(const std::string& name) {
+        return Data.Search(name);
+    }
+
+    void DeletePatient(const Data::Patient& pasien) {
+        Data.remove(pasien);
+    }
+
     void AddDiseaseHistory(int id);
     void AddDiseaseHistory(std::string name);
     void ViewPatientDiseaseHistory(int id);

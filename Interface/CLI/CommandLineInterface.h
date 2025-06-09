@@ -28,6 +28,9 @@ namespace CLI {
     void SelectorManagePatient(const std::string menu[], const int numChoices, std::string header);
     void SelectorBookAppointment(const std::string menu[], const int numChoices, std::string header);
     void DrawMenu(const std::string choices[], int size, int selected, std::string header);
+    void SearchByIDCase();
+    void EditPatient();
+    void DeletePatient();
 
 } // CLI
 

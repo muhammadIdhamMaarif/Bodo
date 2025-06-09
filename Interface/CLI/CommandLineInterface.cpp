@@ -10,10 +10,14 @@
 #include "BookAppointmentManager.h"
 #include "DoctorManager.h"
 #include "PatientManagement.h"
+#include "../../StreamingAssets/SaveLoad.hpp"
 
 #ifdef _WIN32
+    #define STRICT
+    #define WIN32_LEAN_AND_MEAN
     #include <conio.h>
     #include <windows.h>
+    #undef byte
 #else
     #include <termios.h>
     #include <unistd.h>
@@ -86,7 +90,7 @@ namespace CLI {
             // 📌 Manajemen Data Pasien (CRUD)
             "Add New Patient",
             "View All Patients",
-            "Search Patient by ID",
+            "Search Patient",
             "Edit Patient Information",
             "Delete Patient",
 
@@ -141,6 +145,7 @@ namespace CLI {
     }
 
     void MainMenuSelector() {
+        SLManager::SaveData();
         const std::string menu[] = {
             "Book Doctor Appointment",
             "Manage Patient Data",
@@ -231,7 +236,7 @@ namespace CLI {
                 // 📌 Manajemen Data Pasien (CRUD)
                 // "Add New Patient",
                 // "View All Patients",
-                // "Search Patient by ID",
+                // "Search Patient",
                 // "Edit Patient Information",
                 // "Delete Patient",
                 //
@@ -255,10 +260,10 @@ namespace CLI {
 
                 switch (selected) {
                     case 0: Manager::AddNewPatient(); return;
-                    case 1: ; return;
-                    case 2: ; return;
-                    case 3: ; return;
-                    case 4: ; return;
+                    case 1: Manager::ViewAllPatients(); return;
+                    case 2: SearchByIDCase(); return;
+                    case 3: EditPatient(); return;
+                    case 4: DeletePatient(); return;
                     case 5: ; return;
                     case 6: ; return;
                     case 7: ; return;
@@ -401,6 +406,25 @@ namespace CLI {
         std::cout << BRIGHT_YELLOW << CommandLineMainMenuDash << RESET;
     }
 
+    void SearchByIDCase() {
+        std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::SearchPatient(dummy);
+    }
 
+    void EditPatient() {
+        std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::EditPatientInformation(dummy);
+    }
+
+    void DeletePatient() {
+        std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::DeletePatient(dummy);
+    }
 
 } // CLI

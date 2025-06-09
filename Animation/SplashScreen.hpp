@@ -31,11 +31,11 @@ inline void showLoadingBar(int total = 100, int delayMs = 15) {
         std::cout.flush();
 
         // Tunggu dulu sebelum lanjut
-        std::this_thread::sleep_for(std::chrono::milliseconds((rand() % 10) * 8));
+        std::this_thread::sleep_for(std::chrono::milliseconds((rand() % 5)));
     }
 
     std::cout << "\nDone!\n";
-    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 
 

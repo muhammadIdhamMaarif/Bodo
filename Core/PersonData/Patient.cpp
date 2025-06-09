@@ -33,9 +33,10 @@ namespace Data {
 
     int Patient::nextID = 1;
 
-    Patient::Patient()
+    Patient::Patient(bool isIncrementing)
     :   ID(nextID++)
         {
+            if (!isIncrementing) { nextID--; }
             TanggalLahir = makeBirthDate(1970, 1, 1);
             JenisKelamin = 'U';
         }
@@ -92,29 +93,29 @@ namespace Data {
 
     std::string Patient::toString() const {
         std::stringstream ss;
-        ss << Color::CYAN << "ID            : " << Color::RESET << ID << "\n"
-           << Color::CYAN << "Nama          : " << Color::RESET << Nama << "\n"
-           << Color::CYAN << "Tempat Lahir  : " << Color::RESET << TempatLahir << "\n";
+        ss << Color::CYAN << "     ID            : " << Color::RESET << ID << "\n"
+           << Color::CYAN << "     Nama          : " << Color::RESET << Nama << "\n"
+           << Color::CYAN << "     Tempat Lahir  : " << Color::RESET << TempatLahir << "\n";
 
         #if __cplusplus >= 202002L
-        ss << Color::CYAN << "Tanggal Lahir : " << Color::RESET
+        ss << Color::CYAN << "     Tanggal Lahir : " << Color::RESET
            << static_cast<int>(TanggalLahir.year()) << "-"
            << static_cast<unsigned>(TanggalLahir.month()) << "-"
            << static_cast<unsigned>(TanggalLahir.day()) << "\n";
         #else
-        ss << Color::CYAN << "Tanggal Lahir : " << Color::RESET
+        ss << Color::CYAN << "     Tanggal Lahir : " << Color::RESET
            << (TanggalLahir.tm_year + 1900) << "-"
            << (TanggalLahir.tm_mon + 1) << "-"
            << TanggalLahir.tm_mday << "\n";
         #endif
 
-        ss << Color::CYAN << "Jenis Kelamin : " << Color::RESET << JenisKelamin << "\n"
-           << Color::CYAN << "Gol. Darah    : " << Color::RESET << GolonganDarah << "\n"
-           << Color::CYAN << "Alamat        : " << Color::RESET << Alamat << "\n"
-           << Color::CYAN << "Agama         : " << Color::RESET << Agama << "\n"
-           << Color::CYAN << "Nomor Telepon : " << Color::RESET << NomorTelepon << "\n"
-           << Color::CYAN << "Email         : " << Color::RESET << Email << "\n"
-           << RiwayatPenyakit.toString() << "\n\n";
+        ss << Color::CYAN << "     Jenis Kelamin : " << Color::RESET << JenisKelamin << "\n"
+           << Color::CYAN << "     Gol. Darah    : " << Color::RESET << GolonganDarah << "\n"
+           << Color::CYAN << "     Alamat        : " << Color::RESET << Alamat << "\n"
+           << Color::CYAN << "     Agama         : " << Color::RESET << Agama << "\n"
+           << Color::CYAN << "     Nomor Telepon : " << Color::RESET << NomorTelepon << "\n"
+           << Color::CYAN << "     Email         : " << Color::RESET << Email << "\n"
+           << RiwayatPenyakit.toString() << "";
 
         return ss.str();
     }

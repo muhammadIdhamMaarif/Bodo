@@ -25,6 +25,7 @@
 
 #ifndef PATIENT_H
 #define PATIENT_H
+#include <iostream>
 #include <string>
 #include "../Records/DiseaseHistory.h"
 #include "../Records/MedicalRecord.h"
@@ -41,7 +42,7 @@ namespace Data {
 
     public:
         // Constructor dan Destructor
-        Patient();
+        Patient(bool isIncrementing = true);
         Patient(std::string nama,
                 std::string tempatLahir,
                 BirthDate tanggalLahir,
@@ -92,6 +93,7 @@ namespace Data {
         [[nodiscard]] const DiseaseHistory& GetRiwayatPenyakit() const;
 
         // Setters
+        void SetID(const int& id) { ID = id; };
         void SetNama(const std::string& nama);
         void SetTempatLahir(const std::string& tempatLahir);
         void SetTanggalLahir(const BirthDate& tanggalLahir);
@@ -102,6 +104,10 @@ namespace Data {
         void SetNomorTelepon(const std::string& nomorTelepon);
         void SetEmail(const std::string& email);
         void SetRiwayatPenyakit(const DiseaseHistory& riwayat);
+        static void UpdateNextIDFromExisting(int maxID) { nextID = maxID; }
+        static int GetNextID() { return nextID; }
+        static void SetNextID(int id) { nextID = id; }
+
 
         // Adders
         void TambahRiwayatPenyakit(const std::string& penyakit);

@@ -32,6 +32,7 @@ private:
 public:
     DiseaseHistory() = default;
     void AddDisease(const std::string& disease);
+    inline std::vector<std::string> copyDisease() {return diseases;}
     [[nodiscard]] const std::vector<std::string>& GetDiseases() const;
     [[nodiscard]] bool IsEmpty() const;
     [[nodiscard]] std::string toString() const;
