@@ -11,6 +11,7 @@
 #include "DoctorManager.h"
 #include "PatientManagement.h"
 #include "../../StreamingAssets/SaveLoad.hpp"
+#include "BookAppointmentManager.h"
 
 #ifdef _WIN32
     #define STRICT
@@ -68,12 +69,11 @@ namespace CLI {
             "Register New Patient",
 
             // 📅 Pemilihan Jadwal dan Booking
-            "Choose Doctor's Schedule to Book Appointment",
+            "Book Appointment",
 
             // 🔍 Manajemen dan Riwayat Janji Temu
-            "View All Appointments for a Patient",
-            "Cancel an Appointment",
-            "Edit Appointment Schedule",
+            "View All Appointments",
+            "Remove Front Queue",
 
             // 🧾 Output dan Ekspor
             "Print Appointment Summary",
@@ -177,15 +177,14 @@ namespace CLI {
                 // 4 "Register New Patient",
                 //
                 // // 📅 Pemilihan Jadwal dan Booking
-                // 5 "Choose Doctor's Schedule to Book Appointment",
+                // 5 "Book Appointment",
                 //
                 // // 🔍 Manajemen dan Riwayat Janji Temu
-                // 6 "View All Appointments for a Patient",
-                // 7 "Cancel an Appointment",
-                // 8 "Edit Appointment Schedule",
+                // 6 "View All Appointments",
+                // 7 "Remove Front Queue",
                 //
                 // // 🧾 Output dan Ekspor
-                // 9 "Print Appointment Summary",
+                // 8 "Print Appointment Summary",
                 //
                 // // Misc
                 // "Back to Main Menu",
@@ -197,12 +196,11 @@ namespace CLI {
                     case 2: Manager::ViewAllDoctor(); return;
                     case 3: DoctorSearch(); return;
                     case 4: Manager::AddNewPatient(); return;
-                    case 5: PermissionDenied(); return;
-                    case 6: PermissionDenied(); return;
-                    case 7: PermissionDenied(); return;
-                    case 8: PermissionDenied(); return;
-                    case 9: PermissionDenied(); return;
-                    case 10: MainMenuSelector(); return;
+                    case 5: BookAppointment(); return;
+                    case 6: ManagerBooking::ViewAllAppointment(); return;
+                    case 7: ManagerBooking::RemoveFrontQueue(); return;
+                    case 8: ManagerBooking::ViewAllAppointment(); return;
+                    case 9: MainMenuSelector(); return;
                 }
                 std::cout << "\nPress any key to return to menu...";
                 GetKeyPress();
@@ -495,6 +493,14 @@ namespace CLI {
         std::string dummy;
         std::getline(std::cin, dummy);
         Manager::AddMedicalSpecialization(Manager::trim(dummy));
+    }
+
+    void BookAppointment() {
+        std::cout << Color::YELLOW << Text::BookAppointmentText;
+        std::cout << Color::CYAN << "\n\n   Enter Doctor's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        ManagerBooking::SearchPatient(Manager::trim(dummy));
     }
 
 } // CLI

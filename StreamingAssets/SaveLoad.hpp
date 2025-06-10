@@ -9,6 +9,7 @@
 #include "../Data/PatientData.h"
 #include <filesystem>
 
+#include "../Core/PersonData/BookAppointment.hpp"
 #include "../Core/PersonData/Doctor.h"
 #include "../Data/DoctorData.h"
 
@@ -198,6 +199,7 @@ namespace SLManager {
 
         int maxIDPatient = -1;
         int maxIDDoctor = -1;
+        int maxIDAppointment = -1;
 
         json JSON;
         file >> JSON;
@@ -301,6 +303,7 @@ namespace SLManager {
         }
         Data::Patient::UpdateNextIDFromExisting(maxIDPatient);
         Data::Doctor::UpdateNextIDFromExisting(maxIDDoctor);
+        Appointment::setNextID(1);
     }
 
     inline void LoadData() {

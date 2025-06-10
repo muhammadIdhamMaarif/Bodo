@@ -4,12 +4,26 @@
 
 #ifndef BOOKAPPOINTMENTMANAGER_H
 #define BOOKAPPOINTMENTMANAGER_H
+#include <chrono>
+#include <string>
 
-namespace Manager {
+#include "../../Core/PersonData/Doctor.h"
+#include "../../Core/PersonData/Patient.h"
 
-class BookAppointmentManager {
+namespace ManagerBooking {
 
-};
+    void SearchPatient(const std::string& param);
+    void SearchPatientByID(int id);
+    void SearchPatientByName(const std::string& param);
+    void SearchPatientAction(const Data::Patient& patient);
+    void DataNotFoundErrorMessageWithOptionToAddNewOne();
+
+    Data::Doctor SearchDoctor(const std::string& param);
+    Data::Doctor SearchDoctorByID(int id);
+    Data::Doctor SearchDoctorByName(const std::string& name);
+    Data::Doctor SearchDoctorAction(const Data::Doctor& doctor);
+    void ViewAllAppointment();
+    void RemoveFrontQueue();
 
 } // Manager
 

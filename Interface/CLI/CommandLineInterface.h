@@ -43,6 +43,7 @@ namespace CLI {
     void DoctorAddRiwayatPendidikan();
     void DoctorAddUlasanDokter();
     void DoctorAddTindakanSpesialis();
+    void BookAppointment();
 
 } // CLI
 

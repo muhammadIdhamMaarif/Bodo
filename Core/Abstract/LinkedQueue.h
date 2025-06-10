@@ -48,6 +48,8 @@ public:
         if (IsEmpty()) back = nullptr;
     }
 
+    Node* GetFront() const { return front; }
+
     T& Front() override {
         if (IsEmpty()) throw std::underflow_error("Antrian Kosong");
         return front->data;

@@ -44,4 +44,6 @@ add_executable(Bodo main.cpp
         StreamingAssets/SaveLoad.hpp
         Data/DoctorData.h
         Core/Abstract/AVLTreeDoctor.h
+        Core/PersonData/BookAppointment.hpp
+        Core/PersonData/BookAppointment.cpp
 )
