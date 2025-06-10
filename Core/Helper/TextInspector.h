@@ -379,6 +379,70 @@ const std::string PermissionDenied = R"(
 
 )";
 
+ // const std::string RESET = "\033[0m";
+ // const std::string BOLD = "\033[1m";
+ // const std::string CYAN = "\033[36m";
+ // const std::string GREEN = "\033[32m";
+ // const std::string CYAN_VIBRANT = "\033[38;5;51m";
+ // const std::string GREEN_VIBRANT = "\033[38;5;34m";
+ // const std::string BOX_COLOR = "\033[34m";
+ // const std::string YELLOW = "\033[38;5;226m";
+ // const std::string BRIGHT_YELLOW = "\033[93m";
+ // const std::string TEAL = "\033[38;5;37m";
+ // const std::string GOLD = "\033[38;5;178m";
+ // const std::string PURPLE = "\033[38;5;177m";
+ // const std::string RED = "\033[38;5;197m";
+
+const std::string ChooseSpecialist =
+ "\033[38;5;226m"
+ " ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___   \033[38;5;226m\n"
+ "|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|  \033[38;5;226m\n"
+ " _  \033[36m     ___ _                       ___ _     _    _    \033[38;5;226m  _   \033[38;5;226m\n"
+ "| | \033[36m    / __| |_  ___  ___ ___ ___  | __(_)___| |__| |   \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[36m   | (__| ' \\/ _ \\/ _ (_-</ -_) | _|| / -_) / _` |    \033[38;5;226m| |  \033[38;5;226m\n"
+ "| | \033[36m    \\___|_||_\\___/\\___/__/\\___| |_| |_\\___|_\\__,_|    \033[38;5;226m| |  \033[38;5;226m\n"
+ "|_| \033[36m                                                     \033[38;5;226m |_|  \033[38;5;226m\n"
+ " ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___   \033[38;5;226m\n"
+ "|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|  \033[38;5;226m\n"
+ " _                                                         _   \033[38;5;226m\n"
+ "| | \033[38;5;51m1.\033[0mSpesialis Penyakit Dalam (Internis)               \033[38;5;226m  | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m2.\033[0mSpesialis Anak (Pediatri)                          \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m3.\033[0mSpesialis Bedah Umum                               \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m4.\033[0mSpesialis Bedah Ortopedi                           \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m5.\033[0mSpesialis Bedah Saraf                             \033[38;5;226m  | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m6.\033[0mSpesialis Jantung dan Pembuluh Darah (Kardiologi)  \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m7.\033[0mSpesialis Paru (Pulmonologi)                       \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m8.\033[0mSpesialis Mata (Oftalmologi)                       \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m9.\033[0mSpesialis THT (Telinga Hidung Tenggorokan)         \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m10.\033[0mSpesialis Kulit dan Kelamin (Dermato-Venerologi)  \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m11.\033[0mSpesialis Saraf (Neurologi)                       \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m12.\033[0mSpesialis Gigi dan Mulut (Odontologi)             \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m13.\033[0mSpesialis Kandungan dan Kebidanan (Obgyn)         \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m14.\033[0mSpesialis Urologi                                \033[38;5;226m  | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m15.\033[0mSpesialis Anestesi                               \033[38;5;226m  | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m16.\033[0mSpesialis Rehabilitasi Medik                     \033[38;5;226m  | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m17.\033[0mSpesialis Radiologi                               \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m18.\033[0mSpesialis Patologi Klinik                         \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m19.\033[0mSpesialis Patologi Anatomi                       \033[38;5;226m  | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m20.\033[0mSpesialis Kedokteran Forensik                     \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m21.\033[0mSpesialis Kedokteran Jiwa (Psikiatri)             \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m22.\033[0mSpesialis Gizi Klinik                            \033[38;5;226m  | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m23.\033[0mSpesialis Kedokteran Olahraga                     \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m24.\033[0mSpesialis Kedokteran Okupasi (Kerja)             \033[38;5;226m  | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m25.\033[0mSpesialis Mikrobiologi Klinik                      \033[38;5;226m| |  \033[38;5;226m\n"
+ "| | \033[38;5;51m26.\033[0mSpesialis Parasitologi Klinik                    \033[38;5;226m  | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m27.\033[0mSpesialis Alergi Imunologi Klinik                 \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m28.\033[0mSpesialis Geriatri (Lansia)                       \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m29.\033[0mSpesialis Bedah Plastik Rekonstruksi & Estetik    \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m30.\033[0mSpesialis Bedah Toraks Kardiovaskular             \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m31.\033[0mSpesialis Bedah Anak                             \033[38;5;226m  | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m32.\033[0mSpesialis Bedah Onkologi                          \033[38;5;226m | |  \033[38;5;226m\n"
+ "| | \033[38;5;51m33.\033[0mSpesialis Kedokteran Nuklir                       \033[38;5;226m | |  \033[38;5;226m\n"
+ "|_|                                                       \033[38;5;226m|_|  \033[38;5;226m\n"
+ " ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___   \033[38;5;226m\n"
+ "|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|  \033[38;5;226m\n"
+ "\n";
+
 } // Text
 
 #endif //TEXTINSPECTOR_H

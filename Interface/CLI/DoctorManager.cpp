@@ -6,6 +6,7 @@
 
 #include <iostream>
 
+#include "CLI11.hpp"
 #include "CommandLineInterface.h"
 #include "PatientManagement.h"
 #include "../../Core/Helper/ColorList.h"
@@ -488,32 +489,427 @@ namespace Manager {
         return;
     }
 
-    void AddDoctorSchedule(const std::string& param);
-    void AddDoctorScheduleByID(int id);
-    void AddDoctorScheduleByName(std::string name);
-    void AdddoctorScheduleAction(Data::Doctor* arr, Data::Doctor* avl);
+    void AddDoctorSchedule(const std::string& param) {
+        try {
+            size_t idx;
+            int id = std::stoi(param, &idx);
 
-    void AddDoctorExperience(const std::string& param);
-    void AddDoctorExperienceByID(int id);
-    void AddDoctorExperienceByName(std::string name);
-    void AddDoctorExperienceAction(Data::Doctor* arr, Data::Doctor* avl);
+            if (idx == param.length()) {
+                AddDoctorScheduleByID(id);
+                return;
+            }
+        } catch (const std::out_of_range) {
+            Manager::DataNotFoundErrorMessage();
+            return;
+        } catch (const exception) {
+            AddDoctorScheduleByName(param);
+        }
+    }
+    void AddDoctorScheduleByID(int id) {
+        bool found = false;
+        Data::Doctor* doctorFound = nullptr;
+        for (Data::Doctor& doctor : Database::DoctorList) {
+            if (doctor.GetID() == id) {
+                found = true;
+                doctorFound = &doctor;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+        Data::Doctor* doctorFoundPtr = Database::DoctorAVL.Search(doctorFound->GetNama());
+        AdddoctorScheduleAction(doctorFound, doctorFoundPtr);
+    }
+    void AddDoctorScheduleByName(const std::string& name) {
+        Data::Doctor* doctorFoundPtr = Database::DoctorAVL.Search(name);
+        bool found = false;
+        Data::Doctor* doctorFound = nullptr;
+        for (Data::Doctor& doctor : Database::DoctorList) {
+            if (doctor.GetNama() == name) {
+                found = true;
+                doctorFound = &doctor;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+        DeteleDoctorAction(doctorFound, doctorFoundPtr);
+    }
+    void AdddoctorScheduleAction(Data::Doctor* arr, Data::Doctor* avl) {
+        std::cout << Color::CYAN << Text::DataFound << Color::RESET;
+        std::cout << arr->toString(-1);
+        std::cout << Color::CYAN << Text::DataFoundDash << Color::RESET;
 
-    void AddDoctorEducationHistory(const std::string& param);
-    void AddDoctorEducationHistoryByID(int id);
-    void AddDoctorEducationHistoryByName(std::string name);
-    void ADdDoctorEducationHistoryAction(Data::Doctor* arr, Data::Doctor* avl);
+        std::cout << Color::YELLOW << "\nContinue? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::string inputSubmit;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); return; }
 
-    void AddDoctorReview(const std::string& param);
-    void AddDoctorReviewByID(int id);
-    void AddDoctorReviewByName(std::string name);
-    void AddDoctorReviewAction(Data::Doctor* arr, Data::Doctor* avl);
+        std::cout << Color::YELLOW   << "Practice Schedule     : \n" << Color::RESET;
+        int index = 1;
+        while (true) {
+            SesiPraktik newSesiPraktik;
+            std::cout << Color::CYAN_VIBRANT << "     > Schedule " << index++ << "\n" << Color::RESET;
+            std::cout << Color::CYAN         << "           Day Name (Sunday, .. ) : " << Color::RESET;
+            std::getline(std::cin, newSesiPraktik.hari);
+            std::cout << Color::CYAN         << "           Start Hour (00:00)     : " << Color::RESET;
+            std::getline(std::cin, newSesiPraktik.jamMulai);
+            std::cout << Color::CYAN         << "           End Hour (00:00)       : " << Color::RESET;
+            std::getline(std::cin, newSesiPraktik.jamSelesai);
+            std::cout << Color::CYAN         << "           Session (Day,Night)    : " << Color::RESET;
+            std::getline(std::cin, newSesiPraktik.sesi);
 
-    void AddMedicalSpecialization(const std::string& param);
-    void AddMedicalSpecializationByID(int id);
-    void AddMedicalSpecializationByName(std::string name);
-    void AddMedicalSpecializationAction(Data::Doctor* arr, Data::Doctor* avl);
+            arr->TambahJadwal(newSesiPraktik);
+            avl->TambahJadwal(newSesiPraktik);
 
-    void FilterDoctorBySpecialization(const std::string& param);
+            std::cout << Color::BRIGHT_YELLOW << "\nAdd More? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::BRIGHT_YELLOW << ")? " << Color::CYAN_VIBRANT;
+            std::string inputSubmit;
+            std::getline(std::cin, inputSubmit);
+            if (std::toupper(inputSubmit[0]) != 'Y') { break; }
+            std::cout << '\n';
+        }
+
+        std::cout << "\033[2J\033[H"; //clear screen
+        Interface::TextRainbowDiagonalColor(Text::EditedSuccess);
+        std::cout << Color::YELLOW << Text::DataFoundConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+    }
+
+    void AddDoctorExperience(const std::string& param) {
+        try {
+            size_t idx;
+            int id = std::stoi(param, &idx);
+
+            if (idx == param.length()) {
+                AddDoctorExperienceByID(id);
+                return;
+            }
+        } catch (const std::out_of_range) {
+            Manager::DataNotFoundErrorMessage();
+            return;
+        } catch (const exception) {
+            AddDoctorExperienceByName(param);
+        }
+    }
+    void AddDoctorExperienceByID(int id) {
+        bool found = false;
+        Data::Doctor* doctorFound = nullptr;
+        for (Data::Doctor& doctor : Database::DoctorList) {
+            if (doctor.GetID() == id) {
+                found = true;
+                doctorFound = &doctor;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+        Data::Doctor* doctorFoundPtr = Database::DoctorAVL.Search(doctorFound->GetNama());
+        AddDoctorExperienceAction(doctorFound, doctorFoundPtr);
+    }
+    void AddDoctorExperienceByName(const std::string& name) {
+        Data::Doctor* doctorFoundPtr = Database::DoctorAVL.Search(name);
+        bool found = false;
+        Data::Doctor* doctorFound = nullptr;
+        for (Data::Doctor& doctor : Database::DoctorList) {
+            if (doctor.GetNama() == name) {
+                found = true;
+                doctorFound = &doctor;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+        AddDoctorExperienceAction(doctorFound, doctorFoundPtr);
+    }
+    void AddDoctorExperienceAction(Data::Doctor* arr, Data::Doctor* avl) {
+        std::cout << Color::CYAN << Text::DataFound << Color::RESET;
+        std::cout << arr->toString(-1);
+        std::cout << Color::CYAN << Text::DataFoundDash << Color::RESET;
+
+        std::cout << Color::YELLOW << "\nContinue? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::string inputSubmit;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); return; }
+
+        std::cout << Color::YELLOW   << "Doctor's Experience   : \n" << Color::RESET;
+        int index = 1;
+        while (true) {
+            PengalamanPraktik newPengalamanPraktik;
+            std::cout << Color::CYAN_VIBRANT << "     > Experience " << index++ << "\n" << Color::RESET;
+            std::cout << Color::CYAN         << "           Hospital Name          : " << Color::RESET;
+            std::getline(std::cin, newPengalamanPraktik.rumahSakit);
+            std::cout << Color::CYAN         << "           Position               : " << Color::RESET;
+            std::getline(std::cin, newPengalamanPraktik.jabatan);
+            std::cout << Color::CYAN         << "           Year Worked            : " << Color::RESET;
+            std::getline(std::cin, newPengalamanPraktik.waktu);
+
+            avl->TambahPengalaman(newPengalamanPraktik);
+            arr->TambahPengalaman(newPengalamanPraktik);
+
+            std::cout << Color::BRIGHT_YELLOW << "\nAdd More? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::BRIGHT_YELLOW << ")? " << Color::CYAN_VIBRANT;
+            std::string inputSubmit;
+            std::getline(std::cin, inputSubmit);
+            if (std::toupper(inputSubmit[0]) != 'Y') { break; }
+            std::cout << '\n';
+        }
+
+        std::cout << "\033[2J\033[H"; //clear screen
+        Interface::TextRainbowDiagonalColor(Text::EditedSuccess);
+        std::cout << Color::YELLOW << Text::DataFoundConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+    }
+
+    void AddDoctorEducationHistory(const std::string& param) {
+        try {
+            size_t idx;
+            int id = std::stoi(param, &idx);
+
+            if (idx == param.length()) {
+                AddDoctorEducationHistoryByID(id);
+                return;
+            }
+        } catch (const std::out_of_range) {
+            Manager::DataNotFoundErrorMessage();
+            return;
+        } catch (const exception) {
+            AddDoctorEducationHistoryByName(param);
+        }
+    }
+    void AddDoctorEducationHistoryByID(int id) {
+        bool found = false;
+        Data::Doctor* doctorFound = nullptr;
+        for (Data::Doctor& doctor : Database::DoctorList) {
+            if (doctor.GetID() == id) {
+                found = true;
+                doctorFound = &doctor;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+        Data::Doctor* doctorFoundPtr = Database::DoctorAVL.Search(doctorFound->GetNama());
+        ADdDoctorEducationHistoryAction(doctorFound, doctorFoundPtr);
+    }
+    void AddDoctorEducationHistoryByName(const std::string& name) {
+        Data::Doctor* doctorFoundPtr = Database::DoctorAVL.Search(name);
+        bool found = false;
+        Data::Doctor* doctorFound = nullptr;
+        for (Data::Doctor& doctor : Database::DoctorList) {
+            if (doctor.GetNama() == name) {
+                found = true;
+                doctorFound = &doctor;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+        ADdDoctorEducationHistoryAction(doctorFound, doctorFoundPtr);
+    }
+    void ADdDoctorEducationHistoryAction(Data::Doctor* arr, Data::Doctor* avl) {
+        std::cout << Color::CYAN << Text::DataFound << Color::RESET;
+        std::cout << arr->toString(-1);
+        std::cout << Color::CYAN << Text::DataFoundDash << Color::RESET;
+
+        std::cout << Color::YELLOW << "\nContinue? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::string inputSubmit;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); return; }
+
+        std::cout << Color::YELLOW   << "Doctor Education      : \n" << Color::RESET;
+        std::cout << Color::GREEN    << "    If done, press \"Enter\" with blank input.\n" << Color::RESET;
+        while (true) {
+            std::string temp;
+            std::cout << Color::CYAN << "     > " << Color::RESET;
+            std::getline(std::cin, temp);
+            if (temp == "") break;
+            arr->TambahRiwayatPendidikan(temp);
+            avl->TambahRiwayatPendidikan(temp);
+        }
+
+        std::cout << "\033[2J\033[H"; //clear screen
+        Interface::TextRainbowDiagonalColor(Text::EditedSuccess);
+        std::cout << Color::YELLOW << Text::DataFoundConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+    }
+
+    void AddDoctorReview(const std::string& param) {
+        try {
+            size_t idx;
+            int id = std::stoi(param, &idx);
+
+            if (idx == param.length()) {
+                AddDoctorReviewByID(id);
+                return;
+            }
+        } catch (const std::out_of_range) {
+            Manager::DataNotFoundErrorMessage();
+            return;
+        } catch (const exception) {
+            AddDoctorReviewByName(param);
+        }
+    }
+    void AddDoctorReviewByID(int id) {
+        bool found = false;
+        Data::Doctor* doctorFound = nullptr;
+        for (Data::Doctor& doctor : Database::DoctorList) {
+            if (doctor.GetID() == id) {
+                found = true;
+                doctorFound = &doctor;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+        Data::Doctor* doctorFoundPtr = Database::DoctorAVL.Search(doctorFound->GetNama());
+        AddDoctorReviewAction(doctorFound, doctorFoundPtr);
+    }
+    void AddDoctorReviewByName(const std::string& name) {
+        Data::Doctor* doctorFoundPtr = Database::DoctorAVL.Search(name);
+        bool found = false;
+        Data::Doctor* doctorFound = nullptr;
+        for (Data::Doctor& doctor : Database::DoctorList) {
+            if (doctor.GetNama() == name) {
+                found = true;
+                doctorFound = &doctor;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+        AddDoctorReviewAction(doctorFound, doctorFoundPtr);
+    }
+    void AddDoctorReviewAction(Data::Doctor* arr, Data::Doctor* avl) {
+        std::cout << Color::CYAN << Text::DataFound << Color::RESET;
+        std::cout << arr->toString(-1);
+        std::cout << Color::CYAN << Text::DataFoundDash << Color::RESET;
+
+        std::cout << Color::YELLOW << "\nContinue? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::string inputSubmit;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); return; }
+
+        std::cout << Color::YELLOW   << "Doctor's Reviews      : \n" << Color::RESET;
+        int index = 1;
+        while (true) {
+            Ulasan newUlasan;
+            std::string dateInput, ratingInput;
+            std::cout << Color::CYAN_VIBRANT << "     > Reviews " << index++ << "\n" << Color::RESET;
+            std::cout << Color::CYAN         << "           Date (DD-MM-YYYY)      : " << Color::RESET;
+            std::getline(std::cin, dateInput);
+            newUlasan.tanggal = convertToTimeT(dateInput);
+            std::cout << Color::CYAN         << "           Username               : " << Color::RESET;
+            std::getline(std::cin, newUlasan.nama);
+            std::cout << Color::CYAN         << "           Comment                : " << Color::RESET;
+            std::getline(std::cin, newUlasan.komentar);
+            std::cout << Color::CYAN         << "           Rating (1-5)           : " << Color::RESET;
+            std::getline(std::cin, ratingInput);
+            auto rating = safeStringToInt(ratingInput);
+            if (rating && *rating >= 1 && *rating <= 5) {
+                newUlasan.rating = *rating;
+            }
+
+            arr->TambahUlasan(newUlasan);
+            avl->TambahUlasan(newUlasan);
+
+            std::cout << Color::BRIGHT_YELLOW << "\nAdd More? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::BRIGHT_YELLOW << ")? " << Color::CYAN_VIBRANT;
+            std::string inputSubmit;
+            std::getline(std::cin, inputSubmit);
+            if (std::toupper(inputSubmit[0]) != 'Y') { break; }
+            std::cout << '\n';
+        }
+
+        std::cout << "\033[2J\033[H"; //clear screen
+        Interface::TextRainbowDiagonalColor(Text::EditedSuccess);
+        std::cout << Color::YELLOW << Text::DataFoundConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+    }
+
+    void AddMedicalSpecialization(const std::string& param) {
+        try {
+            size_t idx;
+            int id = std::stoi(param, &idx);
+
+            if (idx == param.length()) {
+                AddMedicalSpecializationByID(id);
+                return;
+            }
+        } catch (const std::out_of_range) {
+            Manager::DataNotFoundErrorMessage();
+            return;
+        } catch (const exception) {
+            AddMedicalSpecializationByName(param);
+        }
+    }
+    void AddMedicalSpecializationByID(int id) {
+        bool found = false;
+        Data::Doctor* doctorFound = nullptr;
+        for (Data::Doctor& doctor : Database::DoctorList) {
+            if (doctor.GetID() == id) {
+                found = true;
+                doctorFound = &doctor;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+        Data::Doctor* doctorFoundPtr = Database::DoctorAVL.Search(doctorFound->GetNama());
+        AddMedicalSpecializationAction(doctorFound, doctorFoundPtr);
+    }
+    void AddMedicalSpecializationByName(const std::string& name) {
+        Data::Doctor* doctorFoundPtr = Database::DoctorAVL.Search(name);
+        bool found = false;
+        Data::Doctor* doctorFound = nullptr;
+        for (Data::Doctor& doctor : Database::DoctorList) {
+            if (doctor.GetNama() == name) {
+                found = true;
+                doctorFound = &doctor;
+                break;
+            }
+        }
+        if (!found) { DataNotFoundErrorMessage(); return;}
+        AddMedicalSpecializationAction(doctorFound, doctorFoundPtr);
+    }
+    void AddMedicalSpecializationAction(Data::Doctor* arr, Data::Doctor* avl) {
+        std::cout << Color::CYAN << Text::DataFound << Color::RESET;
+        std::cout << arr->toString(-1);
+        std::cout << Color::CYAN << Text::DataFoundDash << Color::RESET;
+
+        std::cout << Color::YELLOW << "\nContinue? (" << Color::CYAN << "Y" << Color::YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::string inputSubmit;
+        std::getline(std::cin, inputSubmit);
+        std::cout << Color::RESET;
+        if (std::toupper(inputSubmit[0]) != 'Y') { CLI::MainMenuSelector(); return; }
+
+        std::cout << Color::YELLOW   << "Doctor Medical Action : \n" << Color::RESET;
+        std::cout << Color::GREEN    << "    If done, press \"Enter\" with blank input.\n" << Color::RESET;
+        while (true) {
+            std::string temp;
+            std::cout << Color::CYAN << "     > " << Color::RESET;
+            std::getline(std::cin, temp);
+            if (temp == "") break;
+            arr->TambahTindakan(temp);
+            avl->TambahTindakan(temp);
+        }
+
+        std::cout << "\033[2J\033[H"; //clear screen
+        Interface::TextRainbowDiagonalColor(Text::EditedSuccess);
+        std::cout << Color::YELLOW << Text::DataFoundConfirmation << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        CLI::MainMenuSelector();
+    }
+
+    void FilterDoctorBySpecialization() {
+        std::cout << Text::ChooseSpecialist;
+        std::cout << Color::YELLOW << "Choose By ID " << Color::CYAN << "(1-33): " << Color::CYAN_VIBRANT;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        std::cout << Color::RESET;
+        DataNotFoundErrorMessage();
+    }
 
     void SortDoctorByName();
 

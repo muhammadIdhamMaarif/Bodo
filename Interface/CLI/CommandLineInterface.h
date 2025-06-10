@@ -38,6 +38,11 @@ namespace CLI {
     void DoctorSearch();
     void DoctorUpdate();
     void DoctorDelete();
+    void DoctorAddSesiPraktik();
+    void DoctorAddPengalamanPraktik();
+    void DoctorAddRiwayatPendidikan();
+    void DoctorAddUlasanDokter();
+    void DoctorAddTindakanSpesialis();
 
 } // CLI
 

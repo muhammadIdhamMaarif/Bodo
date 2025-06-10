@@ -34,30 +34,30 @@ namespace Manager {
 
     void AddDoctorSchedule(const std::string& param);
     void AddDoctorScheduleByID(int id);
-    void AddDoctorScheduleByName(std::string name);
+    void AddDoctorScheduleByName(const std::string& name);
     void AdddoctorScheduleAction(Data::Doctor* arr, Data::Doctor* avl);
 
     void AddDoctorExperience(const std::string& param);
     void AddDoctorExperienceByID(int id);
-    void AddDoctorExperienceByName(std::string name);
+    void AddDoctorExperienceByName(const std::string& name);
     void AddDoctorExperienceAction(Data::Doctor* arr, Data::Doctor* avl);
 
     void AddDoctorEducationHistory(const std::string& param);
     void AddDoctorEducationHistoryByID(int id);
-    void AddDoctorEducationHistoryByName(std::string name);
+    void AddDoctorEducationHistoryByName(const std::string& name);
     void ADdDoctorEducationHistoryAction(Data::Doctor* arr, Data::Doctor* avl);
 
     void AddDoctorReview(const std::string& param);
     void AddDoctorReviewByID(int id);
-    void AddDoctorReviewByName(std::string name);
+    void AddDoctorReviewByName(const std::string& name);
     void AddDoctorReviewAction(Data::Doctor* arr, Data::Doctor* avl);
 
     void AddMedicalSpecialization(const std::string& param);
     void AddMedicalSpecializationByID(int id);
-    void AddMedicalSpecializationByName(std::string name);
+    void AddMedicalSpecializationByName(const std::string& name);
     void AddMedicalSpecializationAction(Data::Doctor* arr, Data::Doctor* avl);
 
-    void FilterDoctorBySpecialization(const std::string& param);
+    void FilterDoctorBySpecialization();
 
     void SortDoctorByName();
 

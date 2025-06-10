@@ -168,35 +168,35 @@ namespace CLI {
             } else if (key == KEY_ENTER) {
                 system("cls");
                 // // 🗓️ Booked appointment with doctor
-                // "View All Available Doctors",
-                // "Search Doctor by Specialization",
-                // "View Doctor's Available Schedules",
-                // "Search Doctor by Name or ID",
+                // 0 "View All Available Doctors",
+                // 1 "Search Doctor by Specialization",
+                // 2 "View Doctor's Available Schedules",
+                // 3 "Search Doctor by Name or ID",
                 //
                 // // 👤 Patient identification
-                // "Register New Patient",
+                // 4 "Register New Patient",
                 //
                 // // 📅 Pemilihan Jadwal dan Booking
-                // "Choose Doctor's Schedule to Book Appointment",
+                // 5 "Choose Doctor's Schedule to Book Appointment",
                 //
                 // // 🔍 Manajemen dan Riwayat Janji Temu
-                // "View All Appointments for a Patient",
-                // "Cancel an Appointment",
-                // "Edit Appointment Schedule",
+                // 6 "View All Appointments for a Patient",
+                // 7 "Cancel an Appointment",
+                // 8 "Edit Appointment Schedule",
                 //
                 // // 🧾 Output dan Ekspor
-                // "Print Appointment Summary",
+                // 9 "Print Appointment Summary",
                 //
                 // // Misc
                 // "Back to Main Menu",
                 // "Exit"
 
                 switch (selected) {
-                    case 0: PermissionDenied(); return;
-                    case 1: PermissionDenied(); return;
-                    case 2: PermissionDenied(); return;
-                    case 3: PermissionDenied(); return;
-                    case 4: PermissionDenied(); return;
+                    case 0: Manager::ViewAllDoctor(); return;
+                    case 1: Manager::FilterDoctorBySpecialization(); return;
+                    case 2: Manager::ViewAllDoctor(); return;
+                    case 3: DoctorSearch(); return;
+                    case 4: Manager::AddNewPatient(); return;
                     case 5: PermissionDenied(); return;
                     case 6: PermissionDenied(); return;
                     case 7: PermissionDenied(); return;
@@ -315,13 +315,13 @@ namespace CLI {
                     case 2: DoctorSearch(); return;
                     case 3: DoctorUpdate(); return;
                     case 4: DoctorDelete(); return;
-                    case 5: PermissionDenied(); return;
-                    case 6: PermissionDenied(); return;
-                    case 7: PermissionDenied(); return;
-                    case 8: PermissionDenied(); return;
-                    case 9: PermissionDenied(); return;
-                    case 10: PermissionDenied(); return;
-                    case 11: PermissionDenied(); return;
+                    case 5: DoctorAddSesiPraktik(); return;
+                    case 6: DoctorAddPengalamanPraktik(); return;
+                    case 7: DoctorAddRiwayatPendidikan(); return;
+                    case 8: DoctorAddUlasanDokter(); return;
+                    case 9: DoctorAddTindakanSpesialis(); return;
+                    case 10: Manager::FilterDoctorBySpecialization(); return;
+                    case 11: Manager::ViewAllDoctor(); return;
                     case 12: MainMenuSelector(); return;
                 }
                 std::cout << "\nPress any key to return to menu...";
@@ -460,6 +460,41 @@ namespace CLI {
         std::string dummy;
         std::getline(std::cin, dummy);
         Manager::DeleteDoctor(Manager::trim(dummy));
+    }
+
+    void DoctorAddSesiPraktik() {
+        std::cout << Color::CYAN << "\n\n   Enter Doctor's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::AddDoctorSchedule(Manager::trim(dummy));
+    }
+
+    void DoctorAddPengalamanPraktik() {
+        std::cout << Color::CYAN << "\n\n   Enter Doctor's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::AddDoctorExperience(Manager::trim(dummy));
+    }
+
+    void DoctorAddRiwayatPendidikan() {
+        std::cout << Color::CYAN << "\n\n   Enter Doctor's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::AddDoctorEducationHistory(Manager::trim(dummy));
+    }
+
+    void DoctorAddUlasanDokter() {
+        std::cout << Color::CYAN << "\n\n   Enter Doctor's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::AddDoctorReview(Manager::trim(dummy));
+    }
+
+    void DoctorAddTindakanSpesialis() {
+        std::cout << Color::CYAN << "\n\n   Enter Doctor's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::AddMedicalSpecialization(Manager::trim(dummy));
     }
 
 } // CLI
