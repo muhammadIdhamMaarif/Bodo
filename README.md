@@ -15,11 +15,11 @@
 ## 📖 Table of Contents
 
 - [Features](#-features)
-- [Demo](#-demo)
 - [Installation](#-installation)
 - [Usage](#-usage)
 - [Project Structure](#-project-structure)
 - [Data Structures Used](#-data-structures-used)
+- [Demo](#-demo)
 - [Contributing](#-contributing)
 - [License](#-license)
 - [Acknowledgements](#-acknowledgements)
@@ -38,22 +38,6 @@
 
 ---
 
-## 🎬 Demo
-
-![C1](StreamingAssets/GIFs/C1.gif)
-![C2](StreamingAssets/GIFs/C2.gif)
-![C3](StreamingAssets/GIFs/C3.gif)
-![C4](StreamingAssets/GIFs/C4.gif)
-![C5](StreamingAssets/GIFs/C5.gif)
-![C6](StreamingAssets/GIFs/C6.gif)
-![C7](StreamingAssets/GIFs/C7.gif)
-![C8](StreamingAssets/GIFs/C8.gif)
-![C9](StreamingAssets/GIFs/C9.gif)
-
-
-
-
----
 
 ## 🛠 Installation
 
@@ -61,6 +45,29 @@
 
 - **C++ Compiler**: Ensure you have a C++20 compatible compiler installed.
 - **CMake**: Version 3.10 or higher.
+- **Ninja**: Version 1.10 or higher.
+
+### Install Prerequisites
+
+1. [**Install Chocolatey**](https://chocolatey.org/install)
+2. **Open Windows PowerShell in Administrator Mode**
+3. **Install CMake**
+   
+   ```bash
+   choco install cmake
+   ```
+
+4. **Install Ninja**
+
+   ```bash
+   choco install ninja
+   ```
+
+5. **Install C++ Compiler (MinGW) if haven't**
+
+   ```bash
+   choco install mingw
+   ```
 
 ### Steps
 
@@ -76,8 +83,8 @@
    ```bash
    mkdir build
    cd build
-   cmake ..
-   make
+   cmake .. -G Ninja
+   ninja
    ```
 
 3. **Run the Application**
@@ -86,7 +93,7 @@
    ./Bodo
    ```
 
-*For Windows users, ensure that CMake and a compatible compiler (like MinGW) are properly installed and configured.*
+*Ensure that CMake and a compatible compiler (like MinGW) are properly installed and configured.*
 
 ---
 
@@ -94,23 +101,10 @@
 
 Upon running the application, you'll be presented with an interactive menu:
 
-```
-========================================
-|        Bodo Hospital System          |
-========================================
-1. Add New Patient
-2. View Patient Queue
-3. Search Medical Records
-4. Update Patient Information
-5. Delete Patient Record
-6. Undo Last Operation
-7. Save Records to File
-8. Exit
-========================================
-Enter your choice:
-```
+![Welcome](StreamingAssets/Image/image%20(13).png)
+![MainMenu](StreamingAssets/Image/image%20(14).png)
 
-*Navigate through the menu by entering the corresponding number for each operation.*
+*Navigate through the menu by using up and down arrow key, then press "Enter" to confirm.*
 
 ---
 
@@ -118,21 +112,30 @@ Enter your choice:
 
 ```
 Bodo/
+├── Animation/
 ├── Core/
 │   ├── Abstract/
 │   ├── Helper/
 │   ├── PeronData/
 │   └── Records/
+├── Data/
+├── DataExample/
 ├── Interface/
 │   ├── CLI/
 │   └── GUI/
+├── StreamingAssets/
 ├── main.cpp
 ├── CMakeLists.txt
+├── LICENSE
 └── README.md
 ```
 
+- **Animation/**: Contains the welcoming animation and splash screen.
 - **Core/**: Contains the implementation of core data structures.
+- **Data/**: Manages the data structure of corresponding classes.
+- **DataExample/**: Contains 1 template Data.json, to use copy it to build/SaveData/.
 - **Interface/**: Manages the command-line interface, graphical interface and user interactions.
+- **StreamingAssets/**: Manages the data save and load, also contains the GIFs and Images.
 - **main.cpp**: Entry point of the application.
 
 ---
@@ -150,6 +153,20 @@ Bodo/
 - **Operations**: Insert, Delete, Search, In-order Traversal.
 
 *Using AVL Trees ensures that search operations remain efficient even as the dataset grows.*
+
+---
+
+## 🎬 Demo
+
+![C1](StreamingAssets/GIFs/C1.gif)
+![C2](StreamingAssets/GIFs/C2.gif)
+![C3](StreamingAssets/GIFs/C3.gif)
+![C4](StreamingAssets/GIFs/C4.gif)
+![C5](StreamingAssets/GIFs/C5.gif)
+![C6](StreamingAssets/GIFs/C6.gif)
+![C7](StreamingAssets/GIFs/C7.gif)
+![C8](StreamingAssets/GIFs/C8.gif)
+![C9](StreamingAssets/GIFs/C9.gif)
 
 ---
 
