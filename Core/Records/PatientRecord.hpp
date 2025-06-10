@@ -10,7 +10,7 @@
 
 class PatientRecord {
 private:
-    AVLTree::AVL Data;
+    AVLTreePatient::AVLPatient Data;
 public:
     void AddPatient(const Data::Patient& newPatient) {
         Data.insert(newPatient);

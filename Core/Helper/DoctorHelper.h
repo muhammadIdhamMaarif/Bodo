@@ -55,7 +55,7 @@ struct SesiPraktik {
 };
 
 struct PengalamanPraktik {
-    RumahSakit rumahSakit;      // "RSUD Kota Molang"
+    std::string rumahSakit;      // "RSUD Kota Molang"
     std::string waktu;          // "13 Tahun 9 Bulan"
     std::string jabatan;        // "Chief Financial Officer"
 };

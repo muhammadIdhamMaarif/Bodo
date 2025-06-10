@@ -1,0 +1,931 @@
+[
+    {
+        "data": [
+            {
+                "agama": "Islam",
+                "alamat": "Perum Dwiga A2, Malang",
+                "email": "idham@example.com",
+                "golonganDarah": "O",
+                "id": 0,
+                "jenisKelamin": "M",
+                "nama": "Muhammad Idham Ma'arif",
+                "nomorTelepon": "+62 852-2588-9061",
+                "riwayatPenyakit": [
+                    "Demam Berdarah"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Sri Adila Nurainiwati, Sp.DVE",
+                        "keluhan": "Keloid",
+                        "resep": "Vitamin B",
+                        "tanggal": 1749497174,
+                        "tindakan": "Penyuntikan Pengempes Keloid"
+                    },
+                    {
+                        "dokter": "dr. Sri Adila Nurainiwati, Sp.DVE",
+                        "keluhan": "Keloid",
+                        "resep": "Vitamin B",
+                        "tanggal": 1749497174,
+                        "tindakan": "Penyuntikan Pengempes Keloid"
+                    },
+                    {
+                        "dokter": "dr. Bayu Suryono, Sp.PD",
+                        "keluhan": "Batuk Berkepanjangan",
+                        "resep": "Ambroxol 30mg",
+                        "tanggal": 1733052174,
+                        "tindakan": "Nebulizer"
+                    }
+                ],
+                "tanggalLahir": "2006-07-19",
+                "tempatLahir": "Pekalongan"
+            },
+            {
+                "agama": "Kristen",
+                "alamat": "Jl. Cendrawasih No.10, Jakarta",
+                "email": "andreas@example.com",
+                "golonganDarah": "A",
+                "id": 1,
+                "jenisKelamin": "M",
+                "nama": "Andreas Jonathan",
+                "nomorTelepon": "+62 813-4567-8910",
+                "riwayatPenyakit": [
+                    "Asma"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Intan Maharani, Sp.KK",
+                        "keluhan": "Ruam Kulit",
+                        "resep": "Salep Hidrokortison",
+                        "tanggal": 1721128174,
+                        "tindakan": "Pemberian Salep dan Edukasi"
+                    },
+                    {
+                        "dokter": "dr. Agus Santoso, Sp.THT",
+                        "keluhan": "Telinga Berdengung",
+                        "resep": "Cetirizine",
+                        "tanggal": 1714230174,
+                        "tindakan": "Pembersihan Telinga"
+                    }
+                ],
+                "tanggalLahir": "2003-02-15",
+                "tempatLahir": "Jakarta"
+            },
+            {
+                "agama": "Hindu",
+                "alamat": "Banjar Seminyak, Bali",
+                "email": "ayu.dewi@example.com",
+                "golonganDarah": "B",
+                "id": 2,
+                "jenisKelamin": "F",
+                "nama": "Ayu Dewi Lestari",
+                "nomorTelepon": "+62 812-7654-3210",
+                "riwayatPenyakit": [
+                    "Migrain"
+                ],
+                "riwayatPeriksa": [],
+                "tanggalLahir": "2000-11-20",
+                "tempatLahir": "Denpasar"
+            },
+            {
+                "agama": "Buddha",
+                "alamat": "Jl. Kemuning No.7, Pontianak",
+                "email": "willy@example.com",
+                "golonganDarah": "AB",
+                "id": 3,
+                "jenisKelamin": "M",
+                "nama": "Willy Gunawan",
+                "nomorTelepon": "+62 857-2345-6789",
+                "riwayatPenyakit": [
+                    "Maag",
+                    "Vertigo"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Nur Aisyah, Sp.A",
+                        "keluhan": "Demam Tinggi",
+                        "resep": "Paracetamol",
+                        "tanggal": 1705512174,
+                        "tindakan": "Observasi dan Obat Penurun Demam"
+                    }
+                ],
+                "tanggalLahir": "1998-04-03",
+                "tempatLahir": "Pontianak"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Jl. Imam Bonjol No.2, Surabaya",
+                "email": "fitri@example.com",
+                "golonganDarah": "O",
+                "id": 4,
+                "jenisKelamin": "F",
+                "nama": "Fitriani Rahmawati",
+                "nomorTelepon": "+62 858-3210-4567",
+                "riwayatPenyakit": [],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Hendra Wijaya, Sp.JP",
+                        "keluhan": "Nyeri Dada",
+                        "resep": "Aspirin",
+                        "tanggal": 1699983174,
+                        "tindakan": "EKG dan Edukasi Jantung"
+                    },
+                    {
+                        "dokter": "dr. Rani Kusuma, Sp.M",
+                        "keluhan": "Mata Merah",
+                        "resep": "Tetes Mata Antibiotik",
+                        "tanggal": 1688464174,
+                        "tindakan": "Pemeriksaan Lampu Celah"
+                    },
+                    {
+                        "dokter": "dr. Sulaiman Hakim, Sp.OG",
+                        "keluhan": "Nyeri Haid Berat",
+                        "resep": "Ibuprofen",
+                        "tanggal": 1673955174,
+                        "tindakan": "USG Transvaginal"
+                    }
+                ],
+                "tanggalLahir": "2005-09-12",
+                "tempatLahir": "Surabaya"
+            },
+            {
+                "agama": "Katolik",
+                "alamat": "Jl. Mangga Dua No.5, Medan",
+                "email": "leo@example.com",
+                "golonganDarah": "B",
+                "id": 5,
+                "jenisKelamin": "M",
+                "nama": "Leonardo Sitompul",
+                "nomorTelepon": "+62 811-6677-8899",
+                "riwayatPenyakit": [
+                    "Darah Tinggi"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Wawan Saputra, Sp.OT",
+                        "keluhan": "Terkilir",
+                        "resep": "Obat Anti Inflamasi",
+                        "tanggal": 1662446174,
+                        "tindakan": "Pemasangan Perban dan Kompres"
+                    },
+                    {
+                        "dokter": "dr. Lestari Nuraini, Sp.KJ",
+                        "keluhan": "Kecemasan Berlebih",
+                        "resep": "Diazepam",
+                        "tanggal": 1650937174,
+                        "tindakan": "Konseling Psikologis"
+                    }
+                ],
+                "tanggalLahir": "1995-06-25",
+                "tempatLahir": "Medan"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Komplek Permata Indah, Makassar",
+                "email": "nurul@example.com",
+                "golonganDarah": "A",
+                "id": 6,
+                "jenisKelamin": "F",
+                "nama": "Nurul Hidayah",
+                "nomorTelepon": "+62 857-9988-7766",
+                "riwayatPenyakit": [
+                    "Alergi Makanan"
+                ],
+                "riwayatPeriksa": [],
+                "tanggalLahir": "2001-01-10",
+                "tempatLahir": "Makassar"
+            },
+            {
+                "agama": "Protestan",
+                "alamat": "Jl. Dr. Soetomo No.8, Manado",
+                "email": "jessica@example.com",
+                "golonganDarah": "AB",
+                "id": 7,
+                "jenisKelamin": "F",
+                "nama": "Jessica Monika",
+                "nomorTelepon": "+62 856-3322-4411",
+                "riwayatPenyakit": [
+                    "Diabetes"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Haryo Nugroho, Sp.B",
+                        "keluhan": "Nyeri di perut kanan bawah",
+                        "resep": "Antibiotik dan Pereda Nyeri",
+                        "tanggal": 1659637174,
+                        "tindakan": "Pemeriksaan USG Abdomen"
+                    }
+                ],
+                "tanggalLahir": "1999-08-07",
+                "tempatLahir": "Manado"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Perum Griya Mulya, Palembang",
+                "email": "fikri@example.com",
+                "golonganDarah": "B",
+                "id": 8,
+                "jenisKelamin": "M",
+                "nama": "Ahmad Fikri",
+                "nomorTelepon": "+62 859-2211-3344",
+                "riwayatPenyakit": [
+                    "Asam Urat"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Lisa Paramitha, Sp.KK",
+                        "keluhan": "Jerawat Parah",
+                        "resep": "Isotretinoin",
+                        "tanggal": 1658137174,
+                        "tindakan": "Terapi Topikal dan Oral"
+                    },
+                    {
+                        "dokter": "dr. Aldi Rizky, Sp.THT",
+                        "keluhan": "Radang Tenggorokan",
+                        "resep": "Amoxicillin 500mg",
+                        "tanggal": 1656637174,
+                        "tindakan": "Pemeriksaan Faring dan Edukasi"
+                    }
+                ],
+                "tanggalLahir": "2002-10-30",
+                "tempatLahir": "Palembang"
+            },
+            {
+                "agama": "Hindu",
+                "alamat": "Jl. Melati No.17, Singaraja",
+                "email": "komang@example.com",
+                "golonganDarah": "A",
+                "id": 9,
+                "jenisKelamin": "M",
+                "nama": "Komang Sudana",
+                "nomorTelepon": "+62 855-1111-2222",
+                "riwayatPenyakit": [
+                    "Flu Berat"
+                ],
+                "riwayatPeriksa": [],
+                "tanggalLahir": "2004-03-14",
+                "tempatLahir": "Singaraja"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Jl. Pahlawan No.45, Semarang",
+                "email": "lina@example.com",
+                "golonganDarah": "A",
+                "id": 10,
+                "jenisKelamin": "F",
+                "nama": "Lina Marlina",
+                "nomorTelepon": "+62 812-8888-1122",
+                "riwayatPenyakit": [
+                    "Tipes"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Tania Rahmawati, Sp.M",
+                        "keluhan": "Penglihatan Kabur",
+                        "resep": "Kacamata Baru + Vitamin A",
+                        "tanggal": 1655137174,
+                        "tindakan": "Tes Ketajaman Visual"
+                    }
+                ],
+                "tanggalLahir": "2003-05-19",
+                "tempatLahir": "Semarang"
+            },
+            {
+                "agama": "Kristen",
+                "alamat": "Jl. Sisingamangaraja No.18, Yogyakarta",
+                "email": "samuel@example.com",
+                "golonganDarah": "O",
+                "id": 11,
+                "jenisKelamin": "M",
+                "nama": "Samuel Hartanto",
+                "nomorTelepon": "+62 857-4321-7654",
+                "riwayatPenyakit": [
+                    "Demam Tinggi"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Dedy Firmansyah, Sp.P",
+                        "keluhan": "Sesak Nafas",
+                        "resep": "Salbutamol Inhaler",
+                        "tanggal": 1653637174,
+                        "tindakan": "Pemeriksaan Spirometri"
+                    }
+                ],
+                "tanggalLahir": "2000-12-10",
+                "tempatLahir": "Yogyakarta"
+            },
+            {
+                "agama": "Katolik",
+                "alamat": "Jl. Jambu No.11, Bandung",
+                "email": "veronica@example.com",
+                "golonganDarah": "B",
+                "id": 12,
+                "jenisKelamin": "F",
+                "nama": "Veronica Clara",
+                "nomorTelepon": "+62 813-9988-7766",
+                "riwayatPenyakit": [],
+                "riwayatPeriksa": [],
+                "tanggalLahir": "2002-08-21",
+                "tempatLahir": "Bandung"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Komplek Citra Raya, Tangerang",
+                "email": "rahmat@example.com",
+                "golonganDarah": "AB",
+                "id": 13,
+                "jenisKelamin": "M",
+                "nama": "Rahmat Hidayat",
+                "nomorTelepon": "+62 814-2233-4455",
+                "riwayatPenyakit": [
+                    "Asma",
+                    "Pilek"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Alya Fauziah, Sp.Ak",
+                        "keluhan": "Sakit Kepala Tegang",
+                        "resep": "Aspirin dan Terapi Akupuntur",
+                        "tanggal": 1652137174,
+                        "tindakan": "Akupuntur di Titik Kepala"
+                    }
+                ],
+                "tanggalLahir": "2001-07-05",
+                "tempatLahir": "Tangerang"
+            },
+            {
+                "agama": "Hindu",
+                "alamat": "Jl. Nusa Indah, Gianyar",
+                "email": "desi@example.com",
+                "golonganDarah": "A",
+                "id": 14,
+                "jenisKelamin": "F",
+                "nama": "Desi Ayu",
+                "nomorTelepon": "+62 856-5544-3322",
+                "riwayatPenyakit": [
+                    "Migrain"
+                ],
+                "riwayatPeriksa": [],
+                "tanggalLahir": "2004-04-16",
+                "tempatLahir": "Gianyar"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Jl. Kenanga No.22, Pekanbaru",
+                "email": "azka@example.com",
+                "golonganDarah": "B",
+                "id": 15,
+                "jenisKelamin": "M",
+                "nama": "Azka Nurjaman",
+                "nomorTelepon": "+62 812-3344-5566",
+                "riwayatPenyakit": [],
+                "riwayatPeriksa": [],
+                "tanggalLahir": "2005-11-03",
+                "tempatLahir": "Pekanbaru"
+            },
+            {
+                "agama": "Buddha",
+                "alamat": "Jl. Dahlia No.8, Balikpapan",
+                "email": "melissa@example.com",
+                "golonganDarah": "AB",
+                "id": 16,
+                "jenisKelamin": "F",
+                "nama": "Melissa Anggraini",
+                "nomorTelepon": "+62 818-6677-8899",
+                "riwayatPenyakit": [
+                    "Infeksi Saluran Kemih"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Fahmi Zulkarnaen, Sp.S",
+                        "keluhan": "Kesemutan Tangan",
+                        "resep": "Neurobion",
+                        "tanggal": 1650637174,
+                        "tindakan": "Pemeriksaan Saraf Tepi"
+                    }
+                ],
+                "tanggalLahir": "2001-09-27",
+                "tempatLahir": "Balikpapan"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Jl. Soekarno Hatta No.90, Malang",
+                "email": "reza@example.com",
+                "golonganDarah": "O",
+                "id": 17,
+                "jenisKelamin": "M",
+                "nama": "Reza Anugrah",
+                "nomorTelepon": "+62 819-2233-1122",
+                "riwayatPenyakit": [
+                    "Maag",
+                    "Flu"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Melani Indira, Sp.JP",
+                        "keluhan": "Jantung Berdebar",
+                        "resep": "Bisoprolol",
+                        "tanggal": 1649137174,
+                        "tindakan": "Holter Monitoring 24 jam"
+                    }
+                ],
+                "tanggalLahir": "2000-03-11",
+                "tempatLahir": "Malang"
+            },
+            {
+                "agama": "Protestan",
+                "alamat": "Jl. Cempaka No.5, Samarinda",
+                "email": "kevin@example.com",
+                "golonganDarah": "A",
+                "id": 18,
+                "jenisKelamin": "M",
+                "nama": "Kevin Pratama",
+                "nomorTelepon": "+62 817-3322-1100",
+                "riwayatPenyakit": [
+                    "Amandel"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Zaki Maulana, Sp.KFR",
+                        "keluhan": "Cedera Lutut",
+                        "resep": "Pereda Nyeri dan Fisioterapi",
+                        "tanggal": 1647637174,
+                        "tindakan": "Fisioterapi Ringan"
+                    }
+                ],
+                "tanggalLahir": "2003-06-06",
+                "tempatLahir": "Samarinda"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Jl. Letjen Suprapto No.12, Cirebon",
+                "email": "maulida@example.com",
+                "golonganDarah": "B",
+                "id": 19,
+                "jenisKelamin": "F",
+                "nama": "Maulida Rahmani",
+                "nomorTelepon": "+62 815-4400-2200",
+                "riwayatPenyakit": [
+                    "Cacar Air"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Euis Nuraini, Sp.M",
+                        "keluhan": "Mata Gatal",
+                        "resep": "Tetes Mata Antihistamin",
+                        "tanggal": 1646137174,
+                        "tindakan": "Pemeriksaan Alergi"
+                    }
+                ],
+                "tanggalLahir": "2002-02-02",
+                "tempatLahir": "Cirebon"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Jl. Merdeka No.101, Surabaya",
+                "email": "fikri@example.com",
+                "golonganDarah": "A",
+                "id": 20,
+                "jenisKelamin": "M",
+                "nama": "Fikri Ramadhan",
+                "nomorTelepon": "+62 812-1234-5678",
+                "riwayatPenyakit": [
+                    "Demam"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Yuda Pramudya, Sp.An",
+                        "keluhan": "Operasi Minor",
+                        "resep": "Obat Tidur Ringan",
+                        "tanggal": 1631137174,
+                        "tindakan": "Persiapan Anestesi Lokal"
+                    },
+                    {
+                        "dokter": "dr. Vina Pratiwi, Sp.KK",
+                        "keluhan": "Kulit Mengelupas",
+                        "resep": "Krim Pelembap",
+                        "tanggal": 1629637174,
+                        "tindakan": "Terapi Pelembap"
+                    }
+                ],
+                "tanggalLahir": "2001-10-12",
+                "tempatLahir": "Surabaya"
+            },
+            {
+                "agama": "Katolik",
+                "alamat": "Perum Griya Asri Blok B3, Pontianak",
+                "email": "andrea@example.com",
+                "golonganDarah": "B",
+                "id": 21,
+                "jenisKelamin": "F",
+                "nama": "Andrea Yuliana",
+                "nomorTelepon": "+62 813-9876-5432",
+                "riwayatPenyakit": [
+                    "Batuk",
+                    "Flu"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Hasan Tanjung, Sp.OG",
+                        "keluhan": "Menstruasi Tidak Teratur",
+                        "resep": "Pil KB",
+                        "tanggal": 1644637174,
+                        "tindakan": "Tes Hormon dan USG"
+                    },
+                    {
+                        "dokter": "dr. Dea Lestari, Sp.KJ",
+                        "keluhan": "Stres Berat karena Pekerjaan",
+                        "resep": "Antidepresan Ringan",
+                        "tanggal": 1643137174,
+                        "tindakan": "Psikoterapi Singkat"
+                    }
+                ],
+                "tanggalLahir": "2004-03-25",
+                "tempatLahir": "Pontianak"
+            },
+            {
+                "agama": "Protestan",
+                "alamat": "Jl. Kemuning No.14, Medan",
+                "email": "jonathan@example.com",
+                "golonganDarah": "O",
+                "id": 22,
+                "jenisKelamin": "M",
+                "nama": "Jonathan Siregar",
+                "nomorTelepon": "+62 815-7788-9911",
+                "riwayatPenyakit": [],
+                "riwayatPeriksa": [],
+                "tanggalLahir": "2000-06-07",
+                "tempatLahir": "Medan"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Jl. Melati No.56, Palembang",
+                "email": "aulia@example.com",
+                "golonganDarah": "AB",
+                "id": 23,
+                "jenisKelamin": "F",
+                "nama": "Aulia Zahra",
+                "nomorTelepon": "+62 819-2211-3344",
+                "riwayatPenyakit": [
+                    "Maag"
+                ],
+                "riwayatPeriksa": [],
+                "tanggalLahir": "2005-12-30",
+                "tempatLahir": "Palembang"
+            },
+            {
+                "agama": "Hindu",
+                "alamat": "Jl. Nangka No.9, Denpasar",
+                "email": "wayan@example.com",
+                "golonganDarah": "A",
+                "id": 24,
+                "jenisKelamin": "M",
+                "nama": "I Wayan Sujana",
+                "nomorTelepon": "+62 817-4455-6677",
+                "riwayatPenyakit": [
+                    "Radang Tenggorokan"
+                ],
+                "riwayatPeriksa": [],
+                "tanggalLahir": "2002-09-18",
+                "tempatLahir": "Denpasar"
+            },
+            {
+                "agama": "Buddha",
+                "alamat": "Jl. Coklat No.3, Manado",
+                "email": "mei@example.com",
+                "golonganDarah": "O",
+                "id": 25,
+                "jenisKelamin": "F",
+                "nama": "Mei Ling",
+                "nomorTelepon": "+62 816-9988-7766",
+                "riwayatPenyakit": [],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Nadia Yusuf, Sp.GK",
+                        "keluhan": "Obesitas",
+                        "resep": "Multivitamin + Diet Plan",
+                        "tanggal": 1640137174,
+                        "tindakan": "Konsultasi Gizi"
+                    }
+                ],
+                "tanggalLahir": "2003-07-22",
+                "tempatLahir": "Manado"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Jl. Garuda No.45, Bekasi",
+                "email": "hanif@example.com",
+                "golonganDarah": "B",
+                "id": 26,
+                "jenisKelamin": "M",
+                "nama": "Hanif Maulana",
+                "nomorTelepon": "+62 812-6655-4433",
+                "riwayatPenyakit": [
+                    "Asma"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Rangga Setiawan, Sp.Ort",
+                        "keluhan": "Sakit Punggung Bawah",
+                        "resep": "Obat Nyeri Otot",
+                        "tanggal": 1641637174,
+                        "tindakan": "Rontgen Tulang Belakang"
+                    }
+                ],
+                "tanggalLahir": "2001-11-15",
+                "tempatLahir": "Bekasi"
+            },
+            {
+                "agama": "Kristen",
+                "alamat": "Jl. Sudirman No.80, Padang",
+                "email": "melki@example.com",
+                "golonganDarah": "AB",
+                "id": 27,
+                "jenisKelamin": "M",
+                "nama": "Melki Tua",
+                "nomorTelepon": "+62 814-3344-5566",
+                "riwayatPenyakit": [
+                    "Tipes"
+                ],
+                "riwayatPeriksa": [],
+                "tanggalLahir": "2000-08-14",
+                "tempatLahir": "Padang"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Jl. Anggrek No.88, Cianjur",
+                "email": "siti@example.com",
+                "golonganDarah": "A",
+                "id": 28,
+                "jenisKelamin": "F",
+                "nama": "Siti Khotijah",
+                "nomorTelepon": "+62 813-5544-3322",
+                "riwayatPenyakit": [
+                    "Flu"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Kiki Rachmawati, Sp.PA",
+                        "keluhan": "Benjolan di Leher",
+                        "resep": "Antibiotik",
+                        "tanggal": 1638637174,
+                        "tindakan": "Biopsi Jarum Halus"
+                    },
+                    {
+                        "dokter": "dr. Dimas Prasetyo, Sp.THT",
+                        "keluhan": "Hidung Mampet Terus",
+                        "resep": "Dekongestan",
+                        "tanggal": 1637137174,
+                        "tindakan": "Tes Alergi"
+                    }
+                ],
+                "tanggalLahir": "2002-05-01",
+                "tempatLahir": "Cianjur"
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Jl. Ahmad Yani No.1, Kendari",
+                "email": "hasan@example.com",
+                "golonganDarah": "B",
+                "id": 29,
+                "jenisKelamin": "M",
+                "nama": "Hasan Basri",
+                "nomorTelepon": "+62 819-7788-6655",
+                "riwayatPenyakit": [
+                    "Demam Berdarah"
+                ],
+                "riwayatPeriksa": [
+                    {
+                        "dokter": "dr. Rara Mayangsari, Sp.A",
+                        "keluhan": "Anak Pilek dan Demam",
+                        "resep": "Paracetamol Sirup",
+                        "tanggal": 1635637174,
+                        "tindakan": "Observasi 2 Hari"
+                    },
+                    {
+                        "dokter": "dr. Andi Wijaya, Sp.U",
+                        "keluhan": "Nyeri saat Buang Air Kecil",
+                        "resep": "Ciprofloxacin",
+                        "tanggal": 1634137174,
+                        "tindakan": "Tes Urin dan USG Ginjal"
+                    },
+                    {
+                        "dokter": "dr. Citra Larasati, Sp.KK",
+                        "keluhan": "Eksim di Tangan",
+                        "resep": "Salep Kortikosteroid",
+                        "tanggal": 1632637174,
+                        "tindakan": "Terapi Topikal 2 Minggu"
+                    }
+                ],
+                "tanggalLahir": "2003-01-09",
+                "tempatLahir": "Kendari"
+            }
+        ],
+        "name": "Patient"
+    },
+    {
+        "data": [
+            {
+                "agama": "Islam",
+                "alamat": "Jl Dwiga A4, Malang",
+                "email": "robinson@example.com",
+                "golonganDarah": "AB",
+                "id": 0,
+                "jadwal": [
+                    {
+                        "hari": "Senin",
+                        "jamMulai": "16:00",
+                        "jamSelesai": "18:00",
+                        "sesi": "Night"
+                    },
+                    {
+                        "hari": "Selasa",
+                        "jamMulai": "17:00",
+                        "jamSelesai": "19:00",
+                        "sesi": "Night"
+                    },
+                    {
+                        "hari": "Kamis",
+                        "jamMulai": "17:00",
+                        "jamSelesai": "19:00",
+                        "sesi": "Night"
+                    }
+                ],
+                "jenisKelamin": "M",
+                "nama": "drg. Robinson Pasaribu, Sp.BM",
+                "nomorTelepon": "+62 852-6231-8908",
+                "pengalamanPraktik": [
+                    {
+                        "jabatan": "Dokter Bedah Mulut",
+                        "rumahSakit": "Rumah Sakit Lavalette",
+                        "waktu": "2018"
+                    }
+                ],
+                "profil": "drg. Robinson Pasaribu, Sp.BM adalah Ahli Bedah Mulut. Beliau dapat membantu layanan konsultasi sebelum tindakan bedah pada mulut. drg. Robinson Pasaribu menyelesaikan pendidikan Spesialis Bedah Mulut dan Maksilofasial di Universitas Padjadjaran. Selain itu, Beliau terhimpun dengan Persatuan Dokter Gigi Indonesia (PDGI) dan Persatuan Ahli Bedah Mulut dan Maksilofasial Indonesia (PABMI).",
+                "riwayatPendidikan": [
+                    "Sp.BM - Spesialis Bedah Mulut dan Maksilofasial - Universitas Padjadjaran"
+                ],
+                "spesialis": "Dokter Bedah Mulut",
+                "tanggalLahir": "1978-02-19",
+                "tempatLahir": "Malang",
+                "tindakanMedis": [
+                    "Bedah Mulut",
+                    "Konsultasi Bedah Mulut",
+                    "Odontektomi"
+                ],
+                "ulasan": [
+                    {
+                        "komentar": "Dokter menjelaskan dengan sangat detail, dan kita bisa bertanya2, beliau menjelaskan dg lugas jadi mudah dimengerti",
+                        "nama": "Zada Decha Alvaro",
+                        "rating": 5,
+                        "tanggal": "28-01-2023"
+                    },
+                    {
+                        "komentar": "Dokternya ramah en sangat detial utk konsulnya... Good Doctor",
+                        "nama": "Idi Lekso Yuwono",
+                        "rating": 5,
+                        "tanggal": "17-01-2024"
+                    }
+                ]
+            },
+            {
+                "agama": "Katolik",
+                "alamat": "Perumahan Lily No.14, Malang",
+                "email": "edi@example.com",
+                "golonganDarah": "O",
+                "id": 1,
+                "jadwal": [
+                    {
+                        "hari": "Jumat",
+                        "jamMulai": "16:00",
+                        "jamSelesai": "18:00",
+                        "sesi": "Day"
+                    },
+                    {
+                        "hari": "Senin",
+                        "jamMulai": "16:00",
+                        "jamSelesai": "18:00",
+                        "sesi": "Day"
+                    }
+                ],
+                "jenisKelamin": "M",
+                "nama": "Dr. dr. Edi Handoko, Sp.THT-KL (K)",
+                "nomorTelepon": "+62 823-6234-6238",
+                "pengalamanPraktik": [
+                    {
+                        "jabatan": "Dokter THT",
+                        "rumahSakit": "Rumah Sakit Lavalette",
+                        "waktu": "2016"
+                    }
+                ],
+                "profil": "\\Dr. dr. Edi Handoko, Sp.THT-KL (K) merupakan Dokter Spesialis Telinga Hidung Tenggorok-Bedah Kepala Leher. Beliau merupakan lulusan Spesialis Telinga Hidung Tenggorok-Bedah Kepala Leher Universitas Airlangga ini, bergabung dengan Ikatan Dokter Indonesia (IDI) dan Perhimpunan Telinga Hidung Tenggorok Bedah Kepala Leher Indonesia (PERHATI-KL). Dr. dr. Edi Handoko dapat membantu layanan konsultasi keserhatan terkait telinga hidung tenggorok.",
+                "riwayatPendidikan": [
+                    "Sp.THT-KL - Spesialsis Telinga Hidung Tenggorok-Bedah Kepala Leher - Universitas Airlangga"
+                ],
+                "spesialis": "Dokter THT - Ahli Otologi",
+                "tanggalLahir": "1965-04-18",
+                "tempatLahir": "Surabaya",
+                "tindakanMedis": [
+                    "BERA (Brainstem Evoked Response Audiometry)",
+                    "Ekstraksi Korpus Alienum THT",
+                    "Operasi Amanadel",
+                    "Operasi Sinusitis",
+                    "Terapi Laser untuk Sinusitis",
+                    "Tes Pendengaran"
+                ],
+                "ulasan": [
+                    {
+                        "komentar": "Aku berharap bisa konsultasi lagi sama dokter edo handoki masih banyak lagi yang mau aku tanyakan",
+                        "nama": "Muhammad Syafaatul Huda",
+                        "rating": 5,
+                        "tanggal": "17-12-2024"
+                    },
+                    {
+                        "komentar": "Orangnya ramah dan enak diajak konsultasi",
+                        "nama": "Bintang Rudiansyah Maulana",
+                        "rating": 5,
+                        "tanggal": "09-10-2024"
+                    }
+                ]
+            },
+            {
+                "agama": "Islam",
+                "alamat": "Perumahan Sigma A16, Malang",
+                "email": "parmita@example.com",
+                "golonganDarah": "B",
+                "id": 2,
+                "jadwal": [
+                    {
+                        "hari": "Jumat",
+                        "jamMulai": "10:00",
+                        "jamSelesai": "12:00",
+                        "sesi": "Pagi"
+                    },
+                    {
+                        "hari": "Jumat",
+                        "jamMulai": "12:00",
+                        "jamSelesai": "14:00",
+                        "sesi": "Siang"
+                    },
+                    {
+                        "hari": "Jumat",
+                        "jamMulai": "16:00",
+                        "jamSelesai": "18:00",
+                        "sesi": "Malam"
+                    }
+                ],
+                "jenisKelamin": "F",
+                "nama": "drg. Paramita Widyandari, Sp.KG",
+                "nomorTelepon": "+62 842-6430=0902",
+                "pengalamanPraktik": [
+                    {
+                        "jabatan": "Dokter Gigi",
+                        "rumahSakit": "RSIA Bunda Aliyah Pondok Bambu",
+                        "waktu": "2016"
+                    },
+                    {
+                        "jabatan": "Dokter Konservasi Gigi",
+                        "rumahSakit": "Alia Hospital Jakarta Timur",
+                        "waktu": "2022"
+                    }
+                ],
+                "profil": "drg. Paramita Widyandari, Sp.KG adalah seorang Dokter Konservasi Gigi. Beliau menamatkan pendidikan Spesialis Konservasi Gigi di Universitas Indonesia. drg. Paramita Widyandari merupakan anggota dari Ikatan Konservasi Gigi Indonesia (IKORGI). Adapun layanan kesehatan yang dapat Beliau berikan meliputi Konsultasi Kesehatan gigi dan mulut terkait akar gigi.",
+                "riwayatPendidikan": [
+                    "drg. - Kedokteran Gigi dan Mulut - Universitas Padjadjaran",
+                    "Sp.KG - Spesialis Konservasi Gigi - Universitas Indonesia"
+                ],
+                "spesialis": "Dokter Konservasi Gigi",
+                "tanggalLahir": "1978-09-28",
+                "tempatLahir": "Malang",
+                "tindakanMedis": [
+                    "Cabut Gigi",
+                    "Pembersihan Gigi",
+                    "Pemeriksaan dan Konsultasi Perawatan Gigi",
+                    "Pengobatan Gigi Sensitif",
+                    "Tambah Gigi",
+                    "Scaling Gigi",
+                    "Pemutihan Gigi",
+                    "Pencabutan Akar Gigi"
+                ],
+                "ulasan": [
+                    {
+                        "komentar": "",
+                        "nama": "Devi Yanti",
+                        "rating": 5,
+                        "tanggal": "15-07-2023"
+                    },
+                    {
+                        "komentar": "",
+                        "nama": "Fadila Intan Nur Aini",
+                        "rating": 5,
+                        "tanggal": "10-07-2023"
+                    }
+                ]
+            }
+        ],
+        "name": "Doctor"
+    },
+    {
+        "data": [],
+        "name": "Appointment"
+    }
+]

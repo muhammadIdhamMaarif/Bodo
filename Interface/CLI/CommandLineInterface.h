@@ -35,6 +35,9 @@ namespace CLI {
     void PermissionDenied();
     void AddMC();
     void ViewMC();
+    void DoctorSearch();
+    void DoctorUpdate();
+    void DoctorDelete();
 
 } // CLI
 

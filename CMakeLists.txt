@@ -42,4 +42,6 @@ add_executable(Bodo main.cpp
         Core/Records/PatientRecord.hpp
         StreamingAssets/json.hpp
         StreamingAssets/SaveLoad.hpp
+        Data/DoctorData.h
+        Core/Abstract/AVLTreeDoctor.h
 )

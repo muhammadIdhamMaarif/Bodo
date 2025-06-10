@@ -402,7 +402,7 @@ namespace Manager {
         std::cout << Color::RED << Text::DataFoundDash << Color::RESET;
 
         std::cout << Color::YELLOW << "\nPatient will be deleted permanently and cannot be retrieved again!";
-        std::cout << Color::BRIGHT_YELLOW << "\nDelete This User? (" << Color::CYAN << "Y" << Color::BRIGHT_YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::cout << Color::BRIGHT_YELLOW << "\nDelete This Patient? (" << Color::CYAN << "Y" << Color::BRIGHT_YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
         std::string inputSubmit;
         std::getline(std::cin, inputSubmit);
         std::cout << Color::RESET;
@@ -466,7 +466,7 @@ namespace Manager {
         std::cout << Color::RED << Text::DataFoundDash << Color::RESET;
 
         std::cout << Color::YELLOW << "\nPatient will be deleted permanently and cannot be retrieved again!";
-        std::cout << Color::BRIGHT_YELLOW << "\nDelete This User? (" << Color::CYAN << "Y" << Color::BRIGHT_YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
+        std::cout << Color::BRIGHT_YELLOW << "\nDelete This Patient? (" << Color::CYAN << "Y" << Color::BRIGHT_YELLOW << "/" << Color::RED << "N" << Color::YELLOW << ")? " << Color::CYAN_VIBRANT;
         std::string inputSubmit;
         std::getline(std::cin, inputSubmit);
         std::cout << Color::RESET;

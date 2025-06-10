@@ -120,8 +120,7 @@ namespace CLI {
             // 📌 Manajemen Data Dokter
              "Add New Doctor",
              "View All Doctors",
-             "Search Doctor by ID",
-             "Search Doctor by Name",
+             "Search Doctor",
              "Update Doctor Profile",
              "Delete Doctor",
              "Add Doctor Schedule",
@@ -129,13 +128,8 @@ namespace CLI {
              "Add Doctor Education History",
              "Add Doctor Review",
              "Add Medical Action / Specialization",
-             "View Doctor Full Profile",
              "Filter Doctors by Specialization",
              "Sort Doctors by Name",
-             "Sort Doctors by Years of Experience",
-             "Generate Doctor Report (TXT)",
-             "Save All Data",
-             "Load Data from File",
 
             // Misc
              "Back to Main Menu",
@@ -298,33 +292,29 @@ namespace CLI {
             } else if (key == KEY_ENTER) {
                 system("cls");
 
-             // "Add New Doctor",
-             // "View All Doctors",
-             // "Search Doctor by ID",
-             // "Search Doctor by Name",
-             // "Update Doctor Profile",
-             // "Delete Doctor",
-             // "Add Doctor Schedule",
-             // "Add Doctor Experience",
-             // "Add Doctor Education History",
-             // "Add Doctor Review",
-             // "Add Medical Action / Specialization",
-             // "View Doctor Full Profile",
-             // "Filter Doctors by Specialization",
-             // "Sort Doctors by Name",
-             // "Sort Doctors by Years of Experience",
-             // "Generate Doctor Report (TXT)",
-             // "Save All Data",
-             // "Load Data from File",
-             // "Back to Main Menu",
-             // "Exit"
+               //  // 📌 Manajemen Data Dokter
+               //  0 "Add New Doctor",
+               //  1 "View All Doctors",
+               //  2 "Search Doctor",
+               //  3 "Update Doctor Profile",
+               //  4 "Delete Doctor",
+               //  5 "Add Doctor Schedule",
+               //  6 "Add Doctor Experience",
+               //  7 "Add Doctor Education History",
+               //  8 "Add Doctor Review",
+               //  9 "Add Medical Action / Specialization",
+               //  10 "Filter Doctors by Specialization",
+               //  11 "Sort Doctors by Name",
+               //
+               // // Misc
+               //  "Back to Main Menu",
 
                 switch (selected) {
-                    case 0: PermissionDenied(); return;
-                    case 1: PermissionDenied(); return;
-                    case 2: PermissionDenied(); return;
-                    case 3: PermissionDenied(); return;
-                    case 4: PermissionDenied(); return;
+                    case 0: Manager::AddNewDoctor(); return;
+                    case 1: Manager::ViewAllDoctor(); return;
+                    case 2: DoctorSearch(); return;
+                    case 3: DoctorUpdate(); return;
+                    case 4: DoctorDelete(); return;
                     case 5: PermissionDenied(); return;
                     case 6: PermissionDenied(); return;
                     case 7: PermissionDenied(); return;
@@ -332,13 +322,7 @@ namespace CLI {
                     case 9: PermissionDenied(); return;
                     case 10: PermissionDenied(); return;
                     case 11: PermissionDenied(); return;
-                    case 12: PermissionDenied(); return;
-                    case 13: PermissionDenied(); return;
-                    case 14: PermissionDenied(); return;
-                    case 15: PermissionDenied(); return;
-                    case 16: PermissionDenied(); return;
-                    case 17: PermissionDenied(); return;
-                    case 18: MainMenuSelector(); return;
+                    case 12: MainMenuSelector(); return;
                 }
                 std::cout << "\nPress any key to return to menu...";
                 GetKeyPress();
@@ -410,28 +394,28 @@ namespace CLI {
         std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
         std::string dummy;
         std::getline(std::cin, dummy);
-        Manager::SearchPatient(dummy);
+        Manager::SearchPatient(Manager::trim(dummy));
     }
 
     void EditPatient() {
         std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
         std::string dummy;
         std::getline(std::cin, dummy);
-        Manager::EditPatientInformation(dummy);
+        Manager::EditPatientInformation(Manager::trim(dummy));
     }
 
     void DeletePatient() {
         std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
         std::string dummy;
         std::getline(std::cin, dummy);
-        Manager::DeletePatient(dummy);
+        Manager::DeletePatient(Manager::trim(dummy));
     }
 
     void AddDisease() {
         std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
         std::string dummy;
         std::getline(std::cin, dummy);
-        Manager::AddDiseaseHistory(dummy);
+        Manager::AddDiseaseHistory(Manager::trim(dummy));
     }
 
     void PermissionDenied() {
@@ -447,14 +431,35 @@ namespace CLI {
         std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
         std::string dummy;
         std::getline(std::cin, dummy);
-        Manager::AddMedicalCheckupRecord(dummy);
+        Manager::AddMedicalCheckupRecord(Manager::trim(dummy));
     }
 
     void ViewMC() {
         std::cout << Color::CYAN << "\n\n   Enter Patient's ID or Full Name : " << Color::RESET;
         std::string dummy;
         std::getline(std::cin, dummy);
-        Manager::ViewPatientMedicalRecord(dummy);
+        Manager::ViewPatientMedicalRecord(Manager::trim(dummy));
+    }
+
+    void DoctorSearch() {
+        std::cout << Color::CYAN << "\n\n   Enter Doctor's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::SearchDoctor(Manager::trim(dummy));
+    }
+
+    void DoctorUpdate() {
+        std::cout << Color::CYAN << "\n\n   Enter Doctor's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::UpdateDoctor(Manager::trim(dummy));
+    }
+
+    void DoctorDelete() {
+        std::cout << Color::CYAN << "\n\n   Enter Doctor's ID or Full Name : " << Color::RESET;
+        std::string dummy;
+        std::getline(std::cin, dummy);
+        Manager::DeleteDoctor(Manager::trim(dummy));
     }
 
 } // CLI

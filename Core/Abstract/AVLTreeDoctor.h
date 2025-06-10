@@ -1,16 +1,16 @@
-#ifndef AVLTREE_H
-#define AVLTREE_H
+#ifndef AVLTREEDOCTOR_H
+#define AVLTREEDOCTOR_H
 
 #include <iostream>
 #include <queue>
-#include "../PersonData/Patient.h"
+#include "../PersonData/Doctor.h"
 
 using namespace std;
 
-namespace AVLTreePatient {
-    class AVLPatient {
+namespace AVLTreeDoctor {
+    class AVLDoctor {
         struct node {
-            Data::Patient data;
+            Data::Doctor data;
             node* left;
             node* right;
             int height;
@@ -65,13 +65,13 @@ namespace AVLTreePatient {
             return y;
         }
 
-        Data::Patient maxUtility(node* current) {
+        Data::Doctor maxUtility(node* current) {
             if (current->right == nullptr)
                 return current->data;
             return maxUtility(current->right);
         }
 
-        node* insertUtility(node* current, const Data::Patient& value) {
+        node* insertUtility(node* current, const Data::Doctor& value) {
             if (!current) {
                 node* newNode = new node{value, nullptr, nullptr, 1};
                 return newNode;
@@ -104,7 +104,7 @@ namespace AVLTreePatient {
             return current;
         }
 
-        node* removeUtility(node* current, const Data::Patient& value) {
+        node* removeUtility(node* current, const Data::Doctor& value) {
             if (!current) return nullptr;
 
             if (value < current->data)
@@ -118,7 +118,7 @@ namespace AVLTreePatient {
                     return temp;
                 }
 
-                Data::Patient maxVal = maxUtility(current->left);
+                Data::Doctor maxVal = maxUtility(current->left);
                 current->data = maxVal;
                 current->left = removeUtility(current->left, maxVal);
             }
@@ -162,7 +162,7 @@ namespace AVLTreePatient {
             cout << current->data.GetNama() << " ";
         }
 
-        Data::Patient* searchByName(node* current, const std::string& name) {
+        Data::Doctor* searchByName(node* current, const std::string& name) {
             if (!current) return nullptr;
             if (name == toLower(current->data.GetNama())) return &(current->data);
             if (name < toLower(current->data.GetNama())) return searchByName(current->left, name);
@@ -186,11 +186,11 @@ namespace AVLTreePatient {
         }
 
     public:
-        void insert(const Data::Patient& value) {
+        void insert(const Data::Doctor& value) {
             root = insertUtility(root, value);
         }
 
-        void remove(const Data::Patient& value) {
+        void remove(const Data::Doctor& value) {
             root = removeUtility(root, value);
         }
 
@@ -213,7 +213,7 @@ namespace AVLTreePatient {
             display_BFS();
         }
 
-        Data::Patient* Search(const string& name) {
+        Data::Doctor* Search(const string& name) {
             return searchByName(root, trim(toLower(name)));
         }
     };

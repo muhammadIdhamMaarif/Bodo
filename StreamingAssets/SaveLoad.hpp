@@ -9,6 +9,9 @@
 #include "../Data/PatientData.h"
 #include <filesystem>
 
+#include "../Core/PersonData/Doctor.h"
+#include "../Data/DoctorData.h"
+
 namespace SLManager {
     using json = nlohmann::json;
 
@@ -25,6 +28,24 @@ namespace SLManager {
             std::chrono::day{static_cast<unsigned int>(d)}
         };
     }
+
+    inline std::string TimeToString(time_t rawTime, const std::string& format = "%d-%m-%Y") {
+        std::tm* timeInfo = std::localtime(&rawTime); // Use localtime or gmtime
+        std::ostringstream oss;
+        oss << std::put_time(timeInfo, format.c_str());
+        return oss.str();
+    }
+
+    inline time_t StringToTime(const std::string& dateStr, const std::string& format = "%d-%m-%Y") {
+        std::tm timeInfo = {};
+        std::istringstream iss(dateStr);
+        iss >> std::get_time(&timeInfo, format.c_str());
+        if (iss.fail()) {
+            throw std::runtime_error("Failed to parse date string: " + dateStr);
+        }
+        return std::mktime(&timeInfo); // Assumes local time
+    }
+
 
     inline void SavePatientRecords() {
         json JSON = json::array();
@@ -79,10 +100,70 @@ namespace SLManager {
         }
 
         // DOCTOR SECTION
-        json jDoctor = {
+        json jDoctors = {
             {"name", "Doctor"},
             {"data", json::array()}
         };
+
+        for (const Data::Doctor& doctor : Database::DoctorList) {
+            json jDoctor;
+            jDoctor["id"] = doctor.GetID();
+            jDoctor["nama"] = doctor.GetNama();
+            jDoctor["tempatLahir"] = doctor.GetTempatLahir();
+            jDoctor["tanggalLahir"] = toString(doctor.GetTanggalLahir());
+            jDoctor["jenisKelamin"] = std::string(1, doctor.GetJenisKelamin());
+            jDoctor["golonganDarah"] = doctor.GetGolonganDarah();
+            jDoctor["alamat"] = doctor.GetAlamat();
+            jDoctor["agama"] = doctor.GetAgama();
+            jDoctor["nomorTelepon"] = doctor.GetNomorTelepon();
+            jDoctor["email"] = doctor.GetEmail();
+            jDoctor["profil"] = doctor.GetProfilDokter();
+            jDoctor["spesialis"] = doctor.GetSpesialis();
+
+            jDoctor["jadwal"] = json::array();
+            for (const SesiPraktik& praktik : doctor.GetSesiPraktik()) {
+                json sesi;
+                sesi["hari"] = praktik.hari;
+                sesi["jamMulai"] = praktik.jamMulai;
+                sesi["jamSelesai"] = praktik.jamSelesai;
+                sesi["sesi"] = praktik.sesi;
+
+                jDoctor["jadwal"].push_back(sesi);
+            }
+
+            jDoctor["pengalamanPraktik"] = json::array();
+            for (const PengalamanPraktik& praktik : doctor.GetPengalamanPraktik()) {
+                json pengalaman;
+                pengalaman["rumahSakit"] = praktik.rumahSakit;
+                pengalaman["waktu"] = praktik.waktu;
+                pengalaman["jabatan"] = praktik.jabatan;
+
+                jDoctor["pengalamanPraktik"].push_back(pengalaman);
+            }
+
+            jDoctor["riwayatPendidikan"] = json::array();
+            for (const std::string& pendidikan : doctor.GetRiwayatPendidikan()) {
+                jDoctor["riwayatPendidikan"].push_back(pendidikan);
+            }
+
+            jDoctor["ulasan"] = json::array();
+            for (const Ulasan& ulasan : doctor.GetUlasanDokter()) {
+                json review;
+                review["tanggal"] = TimeToString(ulasan.tanggal);
+                review["nama"] = ulasan.nama;
+                review["komentar"] = ulasan.komentar;
+                review["rating"] = ulasan.rating;
+
+                jDoctor["ulasan"].push_back(review);
+            }
+
+            jDoctor["tindakanMedis"] = json::array();
+            for (const std::string& medis : doctor.GetTindakanSpesialis()) {
+                jDoctor["tindakanMedis"].push_back(medis);
+            }
+
+            jDoctors["data"].push_back(jDoctor);
+        }
 
         // APPOINTMENT SECTION
         json jAppointment = {
@@ -91,7 +172,7 @@ namespace SLManager {
         };
 
         JSON.push_back(jPatients);
-        JSON.push_back(jDoctor);
+        JSON.push_back(jDoctors);
         JSON.push_back(jAppointment);
 
         std::string jsonString = JSON.dump(4);
@@ -115,7 +196,8 @@ namespace SLManager {
             return;
         }
 
-        int maxID = -1;
+        int maxIDPatient = -1;
+        int maxIDDoctor = -1;
 
         json JSON;
         file >> JSON;
@@ -126,7 +208,7 @@ namespace SLManager {
                 for (const auto& jPasien : section["data"]) {
                     Data::Patient pasien;
                     pasien.SetID(jPasien["id"]);
-                    maxID = std::max(maxID, pasien.GetID());
+                    maxIDPatient = std::max(maxIDPatient, pasien.GetID());
                     pasien.SetNama(jPasien["nama"]);
                     pasien.SetTempatLahir(jPasien["tempatLahir"]);
                     pasien.SetTanggalLahir(fromString(jPasien["tanggalLahir"]));
@@ -157,8 +239,68 @@ namespace SLManager {
                     Database::Patient.AddPatient(pasien);
                 }
             }
+
+            else if (section["name"] == "Doctor") {
+                for (const auto& jDoctor : section["data"]) {
+                    Data::Doctor doctor;
+                    doctor.SetID(jDoctor["id"]);
+                    maxIDDoctor = std::max(maxIDDoctor, doctor.GetID());
+                    doctor.SetNama(jDoctor["nama"]);
+                    doctor.SetTempatLahir(jDoctor["tempatLahir"]);
+                    doctor.SetTanggalLahir(fromString(jDoctor["tanggalLahir"]));
+                    doctor.SetJenisKelamin(jDoctor["jenisKelamin"].get<std::string>()[0]);
+                    doctor.SetGolonganDarah(jDoctor["golonganDarah"]);
+                    doctor.SetAlamat(jDoctor["alamat"]);
+                    doctor.SetAgama(jDoctor["agama"]);
+                    doctor.SetNomorTelepon(jDoctor["nomorTelepon"]);
+                    doctor.SetEmail(jDoctor["email"]);
+                    doctor.SetProfilDokter(jDoctor["profil"]);
+                    doctor.SetSpesialis(jDoctor["spesialis"]);
+
+                    for (const auto& sesi : jDoctor["jadwal"]) {
+                        SesiPraktik newSesiPraktik;
+                        newSesiPraktik.hari = sesi["hari"];
+                        newSesiPraktik.jamMulai = sesi["jamMulai"];
+                        newSesiPraktik.jamSelesai = sesi["jamSelesai"];
+                        newSesiPraktik.sesi = sesi["sesi"];
+                        doctor.TambahJadwal(newSesiPraktik);
+                    }
+
+                    for (const auto& pengalaman : jDoctor["pengalamanPraktik"]) {
+                        PengalamanPraktik newPengalamanPraktik;
+                        newPengalamanPraktik.rumahSakit = pengalaman["rumahSakit"];
+                        newPengalamanPraktik.waktu = pengalaman["waktu"];
+                        newPengalamanPraktik.jabatan = pengalaman["jabatan"];
+                        doctor.TambahPengalaman(newPengalamanPraktik);
+                    }
+
+                    for (const auto& pendidikan : jDoctor["riwayatPendidikan"]) {
+                        doctor.TambahRiwayatPendidikan(pendidikan);
+                    }
+
+                    for (const auto& review : jDoctor["ulasan"]) {
+                        Ulasan newUlasan;
+                        newUlasan.tanggal = StringToTime(review["tanggal"]);
+                        newUlasan.nama = review["nama"];
+                        newUlasan.komentar = review["komentar"];
+                        newUlasan.rating = review["rating"];
+                        doctor.TambahUlasan(newUlasan);
+                    }
+
+                    for (const auto& medis : jDoctor["tindakanMedis"]) {
+                        doctor.TambahTindakan(medis);
+                    }
+
+                    Database::DoctorList.push_back(doctor);
+                    Database::DoctorAVL.insert(doctor);
+                }
+            }
+
+            // Buat Book Appointment
+
         }
-        Data::Patient::UpdateNextIDFromExisting(maxID);
+        Data::Patient::UpdateNextIDFromExisting(maxIDPatient);
+        Data::Doctor::UpdateNextIDFromExisting(maxIDDoctor);
     }
 
     inline void LoadData() {
