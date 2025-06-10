@@ -38,7 +38,7 @@ public:
 
     void Dequeue() override {
         if (IsEmpty())
-            throw std::underflow_error("Antrian Kosong");
+            return;
 
         Node* temp = front;
         front = front->next;
