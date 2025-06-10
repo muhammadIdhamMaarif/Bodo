@@ -40,7 +40,16 @@
 
 ## 🎬 Demo
 
-![Bodo CLI Demo](https://tenor.com/view/rickroll-roll-rick-never-gonna-give-you-up-never-gonna-gif-22954713)
+![C1](StreamingAssets/GIFs/C1.gif)
+![C2](StreamingAssets/GIFs/C2.gif)
+![C3](StreamingAssets/GIFs/C3.gif)
+![C4](StreamingAssets/GIFs/C4.gif)
+![C5](StreamingAssets/GIFs/C5.gif)
+![C6](StreamingAssets/GIFs/C6.gif)
+![C7](StreamingAssets/GIFs/C7.gif)
+![C8](StreamingAssets/GIFs/C8.gif)
+![C9](StreamingAssets/GIFs/C9.gif)
+
 
 
 
